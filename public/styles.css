@@ -59,31 +59,28 @@ body::after {
   position: relative;
   display: grid;
   grid-template-columns: minmax(320px, 380px) 1fr;
-  gap: 18px;
-  padding: 18px;
+  gap: 20px;
+  padding: 20px;
   max-width: 1560px;
   margin: 0 auto;
-  min-height: 100vh;
-  align-items: stretch;
+  align-items: start;
 }
 
 .sidebar,
 .main-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .sidebar {
   position: sticky;
-  top: 18px;
+  top: 20px;
   align-self: start;
-  min-height: calc(100vh - 36px);
 }
 
 .main-column {
   min-width: 0;
-  min-height: calc(100vh - 36px);
 }
 
 .brand-card,
@@ -100,7 +97,7 @@ body::after {
 .brand-card,
 .panel,
 .hero-card {
-  padding: 20px;
+  padding: 22px;
 }
 
 .brand-card,
@@ -130,7 +127,7 @@ body::after {
 
 .brand-card h1 {
   margin-top: 0;
-  font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+  font-size: clamp(1.95rem, 3.5vw, 2.95rem);
   line-height: 1.02;
   max-width: 10ch;
 }
@@ -139,13 +136,13 @@ body::after {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .brand-logo {
   display: block;
-  width: 82px;
-  min-width: 82px;
+  width: 88px;
+  min-width: 88px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(67, 41, 30, 0.16));
@@ -176,7 +173,7 @@ body::after {
 }
 
 .brand-eyebrow {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--oak);
 }
 
@@ -197,22 +194,16 @@ body::after {
 }
 
 .lead {
-  margin: 10px 0 0;
-  line-height: 1.55;
+  margin: 12px 0 0;
+  line-height: 1.62;
 }
 
 .panel-head {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .panel {
   box-shadow: var(--shadow-soft);
-}
-
-.sidebar .panel:last-of-type {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .panel-head p {
@@ -222,13 +213,13 @@ body::after {
 
 .mode-grid {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .mode-button {
   width: 100%;
   position: relative;
-  padding: 16px 16px 16px 18px;
+  padding: 17px 17px 17px 19px;
   border: 1px solid rgba(67, 41, 30, 0.12);
   border-radius: var(--radius-md);
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 230, 207, 0.82));
@@ -289,7 +280,7 @@ body::after {
 }
 
 .field select {
-  min-height: 50px;
+  min-height: 52px;
 }
 
 .source-badge {
@@ -323,7 +314,7 @@ textarea {
 
 textarea {
   resize: vertical;
-  min-height: 92px;
+  min-height: 96px;
   line-height: 1.6;
 }
 
@@ -345,7 +336,7 @@ textarea {
 }
 
 .sidebar #newConversationButton {
-  margin-top: auto;
+  margin-top: 14px;
 }
 
 .primary-button {
@@ -427,7 +418,7 @@ textarea {
 .hero-card {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: 18px;
   align-items: flex-start;
   background: linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(242, 232, 212, 0.88));
 }
@@ -474,18 +465,18 @@ textarea {
 }
 
 .chat-panel {
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
-  flex: 1;
+  min-height: min(72vh, 760px);
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
 }
 
 .conversation-shell {
-  padding: 16px;
+  padding: 18px;
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(250, 243, 231, 0.78));
   border: 1px solid rgba(67, 41, 30, 0.08);
@@ -561,8 +552,8 @@ textarea {
 .composer {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px;
+  gap: 13px;
+  padding: 18px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92));
@@ -625,12 +616,10 @@ html[dir="rtl"] .brand-signoff {
   .app-shell {
     grid-template-columns: 1fr;
     padding: 16px;
-    min-height: auto;
   }
 
   .sidebar {
     position: static;
-    min-height: auto;
   }
 
   .hero-card,
@@ -644,10 +633,6 @@ html[dir="rtl"] .brand-signoff {
   .conversation-shell,
   .message-list {
     min-height: auto;
-  }
-
-  .sidebar .panel:last-of-type {
-    flex: initial;
   }
 
   .hero-select {
