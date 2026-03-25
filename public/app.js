@@ -798,7 +798,6 @@ const messageTemplate = document.getElementById('messageTemplate');
 const starterRow = document.querySelector('.starter-row');
 const sendButton = document.getElementById('sendButton');
 const chatPanel = document.querySelector('.chat-panel');
-const appShell = document.querySelector('.app-shell');
 
 init();
 
@@ -824,6 +823,20 @@ function attachEvents() {
     updateWelcomeMessage();
     applyInterfaceLanguage();
     saveState();
+  });
+
+  messageInput.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' || event.shiftKey || event.isComposing) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (sendButton.disabled) {
+      return;
+    }
+
+    chatForm.requestSubmit();
   });
 
   chatForm.addEventListener('submit', async (event) => {
@@ -1008,7 +1021,6 @@ function renderMessages() {
 
   const showIntroState = state.messages.length === 1 && state.messages[0].role === 'assistant';
   chatPanel.classList.toggle('is-empty', showIntroState);
-  appShell.classList.toggle('is-empty-state', showIntroState);
 
   state.messages.forEach((message) => {
     const fragment = messageTemplate.content.cloneNode(true);
