@@ -34,7 +34,7 @@ const translations = {
     newConversation: 'New Conversation',
     placeholder:
       'Ask for a sermon, devotion, lecture, doctrinal study, or simple meaning of a verse...',
-    helperText: 'The selected mode stays locked until you change it.',
+    helperText: 'You can change the teaching source at any time during the conversation.',
     send: 'Send',
     thinking: 'Thinking...',
     requestDidNotFinish: 'The request did not finish cleanly.',
@@ -792,6 +792,7 @@ const profileSummary = document.getElementById('profileSummary');
 const messageList = document.getElementById('messageList');
 const messageInput = document.getElementById('messageInput');
 const chatForm = document.getElementById('chatForm');
+const helperText = document.getElementById('helperText');
 const newConversationButton = document.getElementById('newConversationButton');
 const messageTemplate = document.getElementById('messageTemplate');
 const starterRow = document.querySelector('.starter-row');
@@ -911,6 +912,7 @@ function applyInterfaceLanguage() {
   languageLabel.textContent = copy.languageLabel;
   profileEyebrow.textContent = copy.profileEyebrow;
   newConversationButton.textContent = copy.newConversation;
+  helperText.textContent = copy.helperText;
   messageInput.placeholder = copy.placeholder;
 
   populateLanguageOptions();

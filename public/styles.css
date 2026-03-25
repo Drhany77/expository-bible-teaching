@@ -57,36 +57,33 @@ body::after {
 
 .app-shell {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(320px, 380px) 1fr;
-  gap: 24px;
   padding: 24px;
   max-width: 1560px;
   margin: 0 auto;
-  align-items: start;
 }
 
-.sidebar,
-.chat-column {
+.main-column,
+.side-rail {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.sidebar {
-  position: sticky;
-  top: 24px;
-}
-
-.chat-column {
+.main-column {
   min-width: 0;
 }
 
-.control-grid {
+.workspace-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+  gap: 24px;
   align-items: start;
+}
+
+.side-rail {
+  position: sticky;
+  top: 24px;
+  align-self: start;
 }
 
 .brand-card,
@@ -136,6 +133,35 @@ body::after {
   font-size: clamp(2rem, 4vw, 3.1rem);
   line-height: 1.02;
   max-width: 10ch;
+}
+
+.brand-card-compact {
+  padding: 20px;
+}
+
+.brand-card-compact h1 {
+  font-size: clamp(1.65rem, 2vw, 2.1rem);
+  line-height: 1.05;
+  max-width: none;
+}
+
+.brand-card-compact .lead {
+  margin-top: 10px;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.brand-card-compact .brand-header {
+  margin-bottom: 14px;
+}
+
+.brand-card-compact .brand-logo {
+  width: 76px;
+  min-width: 76px;
+}
+
+.brand-card-compact .brand-name {
+  font-size: 1.22rem;
 }
 
 .brand-header {
@@ -212,7 +238,7 @@ body::after {
   box-shadow: var(--shadow-soft);
 }
 
-.control-grid .panel {
+.workspace-grid .panel {
   height: 100%;
 }
 
@@ -475,6 +501,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
 }
@@ -612,12 +639,7 @@ html[dir="rtl"] .brand-signoff {
 
 @media (max-width: 980px) {
   .app-shell {
-    grid-template-columns: 1fr;
     padding: 16px;
-  }
-
-  .sidebar {
-    position: static;
   }
 
   .hero-card,
@@ -626,8 +648,12 @@ html[dir="rtl"] .brand-signoff {
     align-items: flex-start;
   }
 
-  .control-grid {
+  .workspace-grid {
     grid-template-columns: 1fr;
+  }
+
+  .side-rail {
+    position: static;
   }
 
   .hero-select {
