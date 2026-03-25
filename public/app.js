@@ -3,16 +3,16 @@ const modeKeys = ['nt', 'puritan', 'all'];
 const audienceKeys = ['adult', 'children', 'personal', 'advanced'];
 const languageOrder = ['en', 'ar', 'fr', 'pt', 'sw', 'rw', 'zh', 'ko', 'ja', 'hi'];
 const brandCredits = {
-  en: 'Created and operated by NuruMed',
-  ar: 'تم إنشاؤه وتشغيله بواسطة NuruMed',
-  fr: 'Créé et exploité par NuruMed',
-  pt: 'Criado e operado pela NuruMed',
-  sw: 'Imeundwa na kuendeshwa na NuruMed',
-  rw: 'Yakozwe kandi icungwa na NuruMed',
-  zh: '由 NuruMed 创建并运营',
-  ko: 'NuruMed가 개발하고 운영합니다',
-  ja: 'NuruMed により開発・運営',
-  hi: 'NuruMed द्वारा निर्मित और संचालित',
+  en: 'Created and developed by NuruMed',
+  ar: 'تم إنشاؤه وتطويره بواسطة NuruMed',
+  fr: 'Créé et développé par NuruMed',
+  pt: 'Criado e desenvolvido pela NuruMed',
+  sw: 'Imeundwa na kuendelezwa na NuruMed',
+  rw: 'Yakozwe kandi itezwa imbere na NuruMed',
+  zh: '由 NuruMed 创建并开发',
+  ko: 'NuruMed가 제작하고 개발했습니다',
+  ja: 'NuruMed により制作・開発',
+  hi: 'NuruMed द्वारा निर्मित और विकसित',
 };
 
 const translations = {
