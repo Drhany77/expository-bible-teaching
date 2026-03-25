@@ -1,6 +1,7 @@
 const storageKey = 'expository-bible-teaching-state';
 const modeKeys = ['nt', 'puritan', 'all'];
 const audienceKeys = ['adult', 'children', 'personal', 'advanced'];
+const languageOrder = ['en', 'ar', 'fr', 'pt', 'sw', 'rw', 'zh', 'ko', 'ja', 'hi'];
 
 const translations = {
   en: {
@@ -80,7 +81,7 @@ const translations = {
     },
   },
   ar: {
-    label: 'العربية',
+    label: 'Arabic العربية',
     htmlLang: 'ar',
     dir: 'rtl',
     brandEyebrow: 'المفسر الإصلاحي',
@@ -152,7 +153,7 @@ const translations = {
     },
   },
   fr: {
-    label: 'Français',
+    label: 'French Français',
     htmlLang: 'fr',
     dir: 'ltr',
     brandEyebrow: 'Expositeur réformé',
@@ -228,7 +229,7 @@ const translations = {
     },
   },
   zh: {
-    label: '中文',
+    label: 'Chinese 中文',
     htmlLang: 'zh-CN',
     dir: 'ltr',
     brandEyebrow: '改革宗释经助手',
@@ -299,7 +300,7 @@ const translations = {
     },
   },
   ko: {
-    label: '한국어',
+    label: 'Korean 한국어',
     htmlLang: 'ko',
     dir: 'ltr',
     brandEyebrow: '개혁주의 강해자',
@@ -371,7 +372,7 @@ const translations = {
     },
   },
   pt: {
-    label: 'Português',
+    label: 'Portuguese Português',
     htmlLang: 'pt',
     dir: 'ltr',
     brandEyebrow: 'Expositor Reformado',
@@ -448,7 +449,7 @@ const translations = {
     },
   },
   sw: {
-    label: 'Kiswahili',
+    label: 'Swahili Kiswahili',
     htmlLang: 'sw',
     dir: 'ltr',
     brandEyebrow: 'Mfasiri wa Kireformed',
@@ -524,7 +525,7 @@ const translations = {
     },
   },
   rw: {
-    label: 'Kinyarwanda',
+    label: 'Kinyarwanda Kinyarwanda',
     htmlLang: 'rw',
     dir: 'ltr',
     brandEyebrow: 'Umusobanuzi wa Reforme',
@@ -601,7 +602,7 @@ const translations = {
     },
   },
   ja: {
-    label: '日本語',
+    label: 'Japanese 日本語',
     htmlLang: 'ja',
     dir: 'ltr',
     brandEyebrow: '改革派釈解者',
@@ -674,7 +675,7 @@ const translations = {
     },
   },
   hi: {
-    label: 'हिन्दी',
+    label: 'Hindi हिन्दी',
     htmlLang: 'hi',
     dir: 'ltr',
     brandEyebrow: 'सुधारित व्याख्याकार',
@@ -900,7 +901,8 @@ function applyInterfaceLanguage() {
 function populateLanguageOptions() {
   languageSelect.innerHTML = '';
 
-  Object.entries(translations).forEach(([key, copy]) => {
+  languageOrder.forEach((key) => {
+    const copy = translations[key];
     const option = document.createElement('option');
     option.value = key;
     option.textContent = copy.label;
