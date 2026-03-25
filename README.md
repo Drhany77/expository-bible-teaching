@@ -37,11 +37,12 @@ npm start
 
 ## Deploy
 
-This app is ready for a Render web service deployment.
+This app is ready for a Vercel deployment.
 
-- `render.yaml` is included at the repo root.
-- Set `OPENAI_API_KEY` in Render during the initial deploy.
-- The app stores its session metadata in `DATA_DIR`, which the Render blueprint mounts on a persistent disk.
+- `vercel.json` is included at the repo root.
+- Set `OPENAI_API_KEY` in Vercel.
+- Set `OPENAI_MACARTHUR_VECTOR_STORE_ID` to your existing uploaded MacArthur vector store.
+- Set `OPENAI_MACARTHUR_FILE_COUNT=27` unless you change that source collection later.
 - Health check path: `/api/status`
 
-If you want a stable production deployment, connect this project repo to Render and apply the included blueprint.
+If you want a stable production deployment, import the GitHub repo into Vercel and add the environment variables above.

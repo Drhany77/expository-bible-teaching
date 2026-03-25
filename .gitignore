@@ -1,3 +1,4 @@
 node_modules
 data/session-store.json
 .env
+.vercel
