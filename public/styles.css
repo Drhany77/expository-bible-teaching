@@ -67,6 +67,11 @@ body::after {
   align-items: stretch;
 }
 
+.app-shell.is-empty-state {
+  min-height: auto;
+  align-items: start;
+}
+
 .sidebar,
 .main-column {
   display: flex;
@@ -87,6 +92,11 @@ body::after {
 .main-column {
   min-width: 0;
   min-height: calc(100vh - 36px);
+}
+
+.app-shell.is-empty-state .sidebar,
+.app-shell.is-empty-state .main-column {
+  min-height: auto;
 }
 
 .brand-card,
@@ -519,6 +529,10 @@ textarea {
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
 }
 
+.chat-panel.is-empty {
+  flex: 0 0 auto;
+}
+
 .conversation-shell {
   position: relative;
   padding: 14px;
@@ -529,6 +543,10 @@ textarea {
   flex: 1;
   display: flex;
   min-height: 0;
+}
+
+.chat-panel.is-empty .conversation-shell {
+  flex: 0 0 auto;
 }
 
 .conversation-shell::before {
@@ -558,12 +576,21 @@ textarea {
   gap: 12px;
 }
 
+.chat-panel.is-empty .message-list.show-intro {
+  overflow: visible;
+}
+
 .intro-layout {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: 12px;
   flex: 1;
   min-height: 0;
+}
+
+.chat-panel.is-empty .intro-layout {
+  grid-template-rows: auto auto;
+  flex: 0 0 auto;
 }
 
 .intro-overview {
@@ -651,6 +678,11 @@ textarea {
   grid-auto-rows: minmax(0, 1fr);
 }
 
+.chat-panel.is-empty .intro-grid {
+  min-height: auto;
+  grid-auto-rows: auto;
+}
+
 .intro-card {
   display: flex;
   flex-direction: column;
@@ -668,6 +700,12 @@ textarea {
   box-shadow: var(--shadow-soft);
   cursor: pointer;
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.chat-panel.is-empty .intro-card {
+  justify-content: flex-start;
+  height: auto;
+  min-height: 116px;
 }
 
 .intro-card:hover {
