@@ -519,10 +519,6 @@ textarea {
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
 }
 
-.chat-panel.is-empty {
-  flex: 0 0 auto;
-}
-
 .conversation-shell {
   position: relative;
   padding: 14px;
@@ -533,11 +529,6 @@ textarea {
   flex: 1;
   display: flex;
   min-height: 0;
-}
-
-.chat-panel.is-empty .conversation-shell {
-  flex: 0 0 auto;
-  min-height: 360px;
 }
 
 .conversation-shell::before {
@@ -562,7 +553,10 @@ textarea {
 }
 
 .message-list.show-intro {
-  justify-content: flex-start;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  gap: 12px;
 }
 
 .message {
@@ -601,8 +595,11 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 8px;
-  padding-top: 6px;
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 100%;
+  align-content: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .intro-card {
@@ -610,7 +607,8 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  min-height: 148px;
+  min-height: 0;
+  height: 100%;
   padding: 18px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   border-radius: 20px;
@@ -766,12 +764,9 @@ html[dir="rtl"] .brand-signoff {
     min-height: auto;
   }
 
-  .chat-panel.is-empty .conversation-shell {
-    min-height: auto;
-  }
-
   .intro-grid {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .hero-select {
