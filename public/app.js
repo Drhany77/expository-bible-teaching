@@ -797,6 +797,7 @@ const newConversationButton = document.getElementById('newConversationButton');
 const messageTemplate = document.getElementById('messageTemplate');
 const starterRow = document.querySelector('.starter-row');
 const sendButton = document.getElementById('sendButton');
+const chatPanel = document.querySelector('.chat-panel');
 
 init();
 
@@ -1005,6 +1006,7 @@ function renderMessages() {
   messageList.classList.remove('show-intro');
 
   const showIntroState = state.messages.length === 1 && state.messages[0].role === 'assistant';
+  chatPanel.classList.toggle('is-empty', showIntroState);
 
   state.messages.forEach((message) => {
     const fragment = messageTemplate.content.cloneNode(true);
