@@ -11,8 +11,8 @@
       <aside class="sidebar">
         <div class="brand-card">
           <p class="eyebrow brand-eyebrow">Reformed Expositor</p>
-          <h1>Expository Bible Teaching</h1>
-          <p class="lead">
+          <h1 id="brandTitle">Expository Bible Teaching</h1>
+          <p class="lead" id="brandLead">
             A warm, mode-aware Bible study and teaching assistant shaped for
             conservative, expository, Reformed conversation.
           </p>
@@ -20,25 +20,20 @@
 
         <section class="panel">
           <div class="panel-head">
-            <h2>Teaching Mode</h2>
-            <p>Choose the stream that should steer the whole conversation.</p>
+            <h2 id="modeSectionTitle">Teaching Mode</h2>
+            <p id="modeSectionIntro">Choose the stream that should steer the whole conversation.</p>
           </div>
           <div class="mode-grid" id="modeButtons"></div>
         </section>
 
         <section class="panel">
           <div class="panel-head">
-            <h2>Conversation Setup</h2>
-            <p>Keep the tone fitted to your audience. Reply language is detected automatically.</p>
+            <h2 id="setupSectionTitle">Conversation Setup</h2>
+            <p id="setupSectionIntro">Keep the tone fitted to your audience.</p>
           </div>
           <label class="field">
-            <span>Audience</span>
-            <select id="audienceSelect">
-              <option>Sunday sermon / adult class</option>
-              <option>Children / family devotion</option>
-              <option>Personal devotion</option>
-              <option>Advanced teacher / seminary</option>
-            </select>
+            <span id="audienceLabel">Audience</span>
+            <select id="audienceSelect"></select>
           </label>
           <button class="ghost-button" id="newConversationButton" type="button">
             New Conversation
@@ -50,12 +45,15 @@
       <main class="chat-column">
         <section class="hero-card">
           <div>
-            <p class="eyebrow">Active Profile</p>
+            <p class="eyebrow" id="profileEyebrow">Active Profile</p>
             <h2 id="profileTitle">Loading...</h2>
             <p id="profileSummary"></p>
           </div>
           <div class="hero-badges">
-            <span class="badge" id="audienceBadge">Sunday sermon / adult class</span>
+            <label class="hero-select" for="languageSelect">
+              <span id="languageLabel">Language</span>
+              <select id="languageSelect"></select>
+            </label>
           </div>
         </section>
 
