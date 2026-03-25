@@ -66,8 +66,7 @@ body::after {
 }
 
 .sidebar,
-.main-column,
-.side-rail {
+.main-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -81,19 +80,6 @@ body::after {
 
 .main-column {
   min-width: 0;
-}
-
-.workspace-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
-  gap: 24px;
-  align-items: start;
-}
-
-.side-rail {
-  position: sticky;
-  top: 24px;
-  align-self: start;
 }
 
 .brand-card,
@@ -217,10 +203,6 @@ body::after {
 
 .panel {
   box-shadow: var(--shadow-soft);
-}
-
-.workspace-grid .panel {
-  height: 100%;
 }
 
 .panel-head p {
@@ -632,14 +614,6 @@ html[dir="rtl"] .brand-signoff {
   .composer-actions {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .workspace-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .side-rail {
-    position: static;
   }
 
   .hero-select {
