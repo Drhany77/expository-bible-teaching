@@ -133,18 +133,33 @@ body::after {
 
 .brand-header {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   align-items: flex-start;
   margin-bottom: 18px;
 }
 
 .brand-logo {
   display: block;
-  width: min(100%, 290px);
+  width: 92px;
+  min-width: 92px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(67, 41, 30, 0.16));
+}
+
+.brand-signoff {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: center;
+}
+
+.brand-name {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--oak-deep);
 }
 
 .eyebrow {
@@ -572,6 +587,11 @@ html[dir="rtl"] .hero-badges {
 }
 
 html[dir="rtl"] .brand-header {
+  align-items: flex-start;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .brand-signoff {
   align-items: flex-end;
 }
 
@@ -600,6 +620,7 @@ html[dir="rtl"] .brand-header {
   }
 
   .brand-logo {
-    width: min(100%, 250px);
+    width: 78px;
+    min-width: 78px;
   }
 }
