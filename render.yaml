@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: expository-bible-teaching
+    runtime: node
+    plan: starter
+    region: ohio
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_MODEL
+        value: gpt-5.2
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
+      - key: OPENAI_API_KEY
+        sync: false
+    disk:
+      name: expository-bible-teaching-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 5

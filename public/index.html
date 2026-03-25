@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expository Bible Teaching</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-card">
+          <h1>Expository Bible Teaching</h1>
+          <p class="lead">
+            A warm, mode-aware Bible study and teaching assistant shaped for
+            conservative, expository, Reformed conversation.
+          </p>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Teaching Mode</h2>
+            <p>Choose the stream that should steer the whole conversation.</p>
+          </div>
+          <div class="mode-grid" id="modeButtons"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Conversation Setup</h2>
+            <p>Keep the tone fitted to your audience. Reply language is detected automatically.</p>
+          </div>
+          <label class="field">
+            <span>Audience</span>
+            <select id="audienceSelect">
+              <option>Sunday sermon / adult class</option>
+              <option>Children / family devotion</option>
+              <option>Personal devotion</option>
+              <option>Advanced teacher / seminary</option>
+            </select>
+          </label>
+          <button class="ghost-button" id="newConversationButton" type="button">
+            New Conversation
+          </button>
+        </section>
+
+      </aside>
+
+      <main class="chat-column">
+        <section class="hero-card">
+          <div>
+            <p class="eyebrow">Active Profile</p>
+            <h2 id="profileTitle">Loading...</h2>
+            <p id="profileSummary"></p>
+          </div>
+          <div class="hero-badges">
+            <span class="badge" id="audienceBadge">Sunday sermon / adult class</span>
+          </div>
+        </section>
+
+        <section class="chat-panel">
+          <div class="message-list" id="messageList"></div>
+          <form class="composer" id="chatForm">
+            <div class="starter-row">
+              <button class="starter" type="button" data-starter="Prepare a sermon outline for Romans 3:21-26.">
+                Sermon Outline
+              </button>
+              <button class="starter" type="button" data-starter="Give me the plain meaning of John 10:27-30.">
+                Verse Meaning
+              </button>
+              <button class="starter" type="button" data-starter="Create a short family devotion on Psalm 23.">
+                Family Devotion
+              </button>
+            </div>
+            <label class="composer-field">
+              <textarea
+                id="messageInput"
+                rows="4"
+                placeholder="Ask for a sermon, devotion, lecture, doctrinal study, or simple meaning of a verse..."
+              ></textarea>
+            </label>
+            <div class="composer-actions">
+              <p class="helper-text">
+                The selected mode stays locked until you change it.
+              </p>
+              <button class="primary-button send-button" id="sendButton" type="submit">
+                Send
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <template id="messageTemplate">
+      <article class="message">
+        <div class="message-role"></div>
+        <div class="message-body"></div>
+        <div class="message-citations"></div>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

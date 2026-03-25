@@ -1,0 +1,26 @@
+{
+  "name": "expository-treaching",
+  "version": "1.0.0",
+  "description": "Expository Bible Teaching web app for conservative expository Bible study and teaching.",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "keywords": [
+    "theology",
+    "chat",
+    "bible",
+    "expository"
+  ],
+  "author": "Expository Bible Teaching",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "openai": "^6.32.0"
+  }
+}
