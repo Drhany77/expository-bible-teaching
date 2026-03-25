@@ -1,6 +1,6 @@
 const storageKey = 'expository-bible-teaching-state';
 const modeKeys = ['nt', 'puritan', 'all'];
-const audienceKeys = ['children', 'familyChildren', 'family', 'adult', 'advanced'];
+const audienceKeys = ['children', 'family', 'familyChildren', 'adult', 'advanced'];
 const languageOrder = ['en', 'ar', 'fr', 'pt', 'sw', 'rw', 'zh', 'ko', 'ja', 'hi'];
 const brandCredits = {
   en: 'Created and developed by NuruMed',
