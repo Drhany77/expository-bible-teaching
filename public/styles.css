@@ -28,9 +28,9 @@ body {
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(173, 144, 97, 0.28), transparent 28%),
-    radial-gradient(circle at 85% 12%, rgba(92, 104, 69, 0.12), transparent 18%),
-    radial-gradient(circle at bottom right, rgba(92, 104, 69, 0.2), transparent 24%),
+    radial-gradient(circle at top left, rgba(173, 144, 97, 0.2), transparent 28%),
+    radial-gradient(circle at 85% 12%, rgba(92, 104, 69, 0.08), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(92, 104, 69, 0.12), transparent 24%),
     linear-gradient(180deg, #f2e4ca 0%, #f8f1e3 42%, #f0dfc0 100%);
 }
 
@@ -40,8 +40,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(67, 41, 30, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(67, 41, 30, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(67, 41, 30, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(67, 41, 30, 0.014) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -58,11 +58,12 @@ body::after {
 .app-shell {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(320px, 380px) 1fr;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1560px;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+  max-width: 1520px;
   margin: 0 auto;
+  min-height: calc(100vh - 36px);
   align-items: start;
 }
 
@@ -70,17 +71,18 @@ body::after {
 .main-column {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .sidebar {
   position: sticky;
-  top: 20px;
+  top: 18px;
   align-self: start;
 }
 
 .main-column {
   min-width: 0;
+  min-height: calc(100vh - 36px);
 }
 
 .brand-card,
@@ -92,12 +94,13 @@ body::after {
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(249, 241, 227, 0.88));
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .brand-card,
 .panel,
 .hero-card {
-  padding: 22px;
+  padding: 18px;
 }
 
 .brand-card,
@@ -127,22 +130,22 @@ body::after {
 
 .brand-card h1 {
   margin-top: 0;
-  font-size: clamp(1.95rem, 3.5vw, 2.95rem);
-  line-height: 1.02;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  line-height: 1.04;
   max-width: 10ch;
 }
 
 .brand-header {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  margin-bottom: 16px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
 .brand-logo {
   display: block;
-  width: 88px;
-  min-width: 88px;
+  width: 72px;
+  min-width: 72px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(67, 41, 30, 0.16));
@@ -158,7 +161,7 @@ body::after {
 .brand-name {
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 1.4rem;
+  font-size: 1.28rem;
   letter-spacing: -0.02em;
   color: var(--oak-deep);
 }
@@ -173,13 +176,13 @@ body::after {
 }
 
 .brand-eyebrow {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--oak);
 }
 
 .brand-credit {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--muted);
   line-height: 1.45;
 }
@@ -194,12 +197,13 @@ body::after {
 }
 
 .lead {
-  margin: 12px 0 0;
-  line-height: 1.62;
+  margin: 10px 0 0;
+  line-height: 1.56;
+  font-size: 0.96rem;
 }
 
 .panel-head {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .panel {
@@ -208,18 +212,19 @@ body::after {
 
 .panel-head p {
   margin: 8px 0 0;
-  line-height: 1.55;
+  line-height: 1.48;
+  font-size: 0.93rem;
 }
 
 .mode-grid {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .mode-button {
   width: 100%;
   position: relative;
-  padding: 17px 17px 17px 19px;
+  padding: 14px 15px 14px 18px;
   border: 1px solid rgba(67, 41, 30, 0.12);
   border-radius: var(--radius-md);
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 230, 207, 0.82));
@@ -244,14 +249,15 @@ body::after {
 .mode-button strong,
 .library-card strong {
   display: block;
-  font-size: 1rem;
-  margin-bottom: 6px;
+  font-size: 0.96rem;
+  margin-bottom: 5px;
 }
 
 .mode-button span,
 .library-card span {
   display: block;
-  line-height: 1.5;
+  line-height: 1.42;
+  font-size: 0.87rem;
   color: var(--muted);
 }
 
@@ -280,7 +286,7 @@ body::after {
 }
 
 .field select {
-  min-height: 52px;
+  min-height: 48px;
 }
 
 .source-badge {
@@ -306,7 +312,7 @@ textarea {
   border: 1px solid rgba(67, 41, 30, 0.18);
   border-radius: var(--radius-sm);
   background: rgba(255, 250, 241, 0.96);
-  padding: 14px 16px;
+  padding: 13px 15px;
   font: inherit;
   color: var(--ink);
   box-shadow: inset 0 1px 2px rgba(67, 41, 30, 0.04);
@@ -314,8 +320,8 @@ textarea {
 
 textarea {
   resize: vertical;
-  min-height: 96px;
-  line-height: 1.6;
+  min-height: 88px;
+  line-height: 1.58;
 }
 
 .ghost-button,
@@ -336,7 +342,8 @@ textarea {
 }
 
 .sidebar #newConversationButton {
-  margin-top: 14px;
+  margin-top: 12px;
+  width: 100%;
 }
 
 .primary-button {
@@ -416,11 +423,21 @@ textarea {
 }
 
 .hero-card {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
   align-items: flex-start;
   background: linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(242, 232, 212, 0.88));
+}
+
+#profileTitle {
+  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
+}
+
+#profileSummary {
+  margin: 8px 0 0;
+  max-width: 68ch;
+  line-height: 1.55;
 }
 
 .hero-badges {
@@ -433,8 +450,8 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 220px;
-  padding: 12px 14px;
+  min-width: 190px;
+  padding: 10px 12px;
   border-radius: var(--radius-md);
   background: rgba(255, 250, 241, 0.72);
   border: 1px solid rgba(67, 41, 30, 0.08);
@@ -451,7 +468,7 @@ textarea {
 
 .hero-select select {
   min-width: 0;
-  padding: 11px 12px;
+  padding: 10px 12px;
 }
 
 .badge {
@@ -465,19 +482,20 @@ textarea {
 }
 
 .chat-panel {
-  padding: 18px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
-  min-height: min(72vh, 760px);
+  min-height: 0;
+  flex: 1;
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
 }
 
 .conversation-shell {
-  padding: 18px;
-  border-radius: 22px;
+  padding: 14px;
+  border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(250, 243, 231, 0.78));
   border: 1px solid rgba(67, 41, 30, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -489,16 +507,18 @@ textarea {
 .message-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   flex: 1;
   min-height: 0;
   overflow: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
 }
 
 .message {
   max-width: min(860px, 100%);
-  padding: 18px 20px;
-  border-radius: 24px;
+  padding: 16px 18px;
+  border-radius: 22px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(250, 243, 231, 0.82));
   box-shadow: var(--shadow-soft);
@@ -524,7 +544,7 @@ textarea {
 
 .message-body {
   white-space: pre-wrap;
-  line-height: 1.72;
+  line-height: 1.66;
 }
 
 .message-citations {
@@ -552,10 +572,10 @@ textarea {
 .composer {
   display: flex;
   flex-direction: column;
-  gap: 13px;
-  padding: 18px;
+  gap: 10px;
+  padding: 14px;
   border: 1px solid rgba(67, 41, 30, 0.08);
-  border-radius: 22px;
+  border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
@@ -563,11 +583,11 @@ textarea {
 .starter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .starter {
-  padding: 10px 14px;
+  padding: 9px 13px;
   background: rgba(255, 250, 241, 0.94);
   color: var(--oak-deep);
   box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.1);
@@ -577,7 +597,14 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.helper-text {
+  margin: 0;
+  max-width: 70%;
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
 .send-button {
@@ -616,6 +643,7 @@ html[dir="rtl"] .brand-signoff {
   .app-shell {
     grid-template-columns: 1fr;
     padding: 16px;
+    min-height: auto;
   }
 
   .sidebar {
@@ -644,7 +672,11 @@ html[dir="rtl"] .brand-signoff {
   }
 
   .brand-logo {
-    width: 78px;
-    min-width: 78px;
+    width: 74px;
+    min-width: 74px;
+  }
+
+  .helper-text {
+    max-width: none;
   }
 }
