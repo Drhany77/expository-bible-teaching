@@ -1,6 +1,6 @@
 const storageKey = 'expository-bible-teaching-state';
 const modeKeys = ['nt', 'puritan', 'all'];
-const audienceKeys = ['adult', 'children', 'personal', 'advanced'];
+const audienceKeys = ['children', 'familyChildren', 'family', 'adult', 'advanced'];
 const languageOrder = ['en', 'ar', 'fr', 'pt', 'sw', 'rw', 'zh', 'ko', 'ja', 'hi'];
 const brandCredits = {
   en: 'Created and developed by NuruMed',
@@ -24,11 +24,11 @@ const translations = {
     siteTitle: 'Expository Bible Teaching',
     lead:
       'A warm, mode-aware Bible study and teaching assistant shaped for conservative, expository, Reformed conversation.',
-    modeSectionTitle: 'Teaching Mode',
-    modeSectionIntro: 'Choose the stream that should steer the whole conversation.',
+    modeSectionTitle: 'Teaching Source',
+    modeSectionIntro: 'Choose the source stream that should shape the voice and citations of the conversation.',
     setupSectionTitle: 'Conversation Setup',
-    setupSectionIntro: 'Keep the tone fitted to your audience.',
-    audienceLabel: 'Audience',
+    setupSectionIntro: 'Move the explanation from simple, easy language to advanced teacher and seminary depth.',
+    audienceLabel: 'Conversation Level',
     profileEyebrow: 'Active Profile',
     languageLabel: 'Language',
     newConversation: 'New Conversation',
@@ -45,9 +45,10 @@ const translations = {
     profileOnline:
       'Online conservative sources are searched live during the conversation when needed.',
     audiences: {
-      adult: 'Sunday sermon / adult class',
-      children: 'Children / family devotion',
-      personal: 'Personal devotion',
+      children: 'Children',
+      familyChildren: "Family children's devotion",
+      family: 'Family devotion',
+      adult: 'Adult Sunday sermon / adult class',
       advanced: 'Advanced teacher / seminary',
     },
     modes: {
@@ -100,11 +101,11 @@ const translations = {
     siteTitle: 'التعليم الكتابي التفسيري',
     lead:
       'مساعد دافئ لدراسة الكتاب المقدس والتعليم، يراعي النمط المطلوب ومصوغ بروح إصلاحية تفسيرية محافظة.',
-    modeSectionTitle: 'مسار التعليم',
-    modeSectionIntro: 'اختر المسار الذي يوجّه المحادثة كلها.',
+    modeSectionTitle: 'مصدر التعليم',
+    modeSectionIntro: 'اختر مصدر التعليم الذي يوجّه صوت المحادثة واقتباساتها.',
     setupSectionTitle: 'إعداد المحادثة',
-    setupSectionIntro: 'اضبط النبرة بحسب جمهورك.',
-    audienceLabel: 'الجمهور',
+    setupSectionIntro: 'انقل الشرح من لغة سهلة وبسيطة إلى عمق يناسب المعلّم المتقدم والمعهد.',
+    audienceLabel: 'مستوى المحادثة',
     profileEyebrow: 'الملف النشط',
     languageLabel: 'اللغة',
     newConversation: 'محادثة جديدة',
@@ -119,9 +120,10 @@ const translations = {
     starterLabels: ['مخطط عظة', 'معنى الآية', 'تأمل'],
     profileOnline: 'يتم البحث في المصادر المحافظة الموثوقة أثناء المحادثة عند الحاجة.',
     audiences: {
+      children: 'الأطفال',
+      familyChildren: 'تأمل عائلي للأطفال',
+      family: 'تأمل عائلي',
       adult: 'عظة الأحد / درس للكبار',
-      children: 'الأطفال / تأمل عائلي',
-      personal: 'تأمل شخصي',
       advanced: 'معلّم متقدم / معهد لاهوتي',
     },
     modes: {
@@ -172,11 +174,11 @@ const translations = {
     siteTitle: 'Enseignement Biblique Expositif',
     lead:
       "Un assistant chaleureux d'étude biblique et d'enseignement, adapté au mode choisi, dans une ligne réformée, conservatrice et expositive.",
-    modeSectionTitle: "Mode d'enseignement",
-    modeSectionIntro: "Choisissez l'orientation qui doit guider toute la conversation.",
+    modeSectionTitle: "Source d'enseignement",
+    modeSectionIntro: 'Choisissez la source qui doit façonner la voix et les citations de la conversation.',
     setupSectionTitle: 'Configuration de la conversation',
-    setupSectionIntro: 'Ajustez le ton selon votre public.',
-    audienceLabel: 'Public',
+    setupSectionIntro: 'Faites monter le niveau de simple et clair jusqu’à la profondeur d’un enseignant avancé ou du séminaire.',
+    audienceLabel: 'Niveau de conversation',
     profileEyebrow: 'Profil actif',
     languageLabel: 'Langue',
     newConversation: 'Nouvelle conversation',
@@ -193,9 +195,10 @@ const translations = {
     profileOnline:
       'Des sources conservatrices fiables sont consultées en direct pendant la conversation si nécessaire.',
     audiences: {
+      children: 'Enfants',
+      familyChildren: 'Méditation familiale pour enfants',
+      family: 'Méditation familiale',
       adult: 'Sermon du dimanche / classe adulte',
-      children: 'Enfants / méditation familiale',
-      personal: 'Méditation personnelle',
       advanced: 'Enseignant avancé / séminaire',
     },
     modes: {
@@ -247,11 +250,11 @@ const translations = {
     brandEyebrow: '改革宗释经助手',
     siteTitle: '解经式圣经教导',
     lead: '一个温和、会按模式调整的圣经学习与教导助手，立场保守、释经、改革宗。',
-    modeSectionTitle: '教学模式',
-    modeSectionIntro: '选择要引导整个对话的路线。',
+    modeSectionTitle: '教学来源',
+    modeSectionIntro: '选择要塑造整段对话语气与引文来源的路线。',
     setupSectionTitle: '对话设置',
-    setupSectionIntro: '让语气贴合你的受众。',
-    audienceLabel: '受众',
+    setupSectionIntro: '把解释程度从简单易懂逐步提升到高级教师和神学院层面。',
+    audienceLabel: '对话层级',
     profileEyebrow: '当前配置',
     languageLabel: '语言',
     newConversation: '新建对话',
@@ -266,15 +269,16 @@ const translations = {
     starterLabels: ['讲章大纲', '经文意思', '灵修'],
     profileOnline: '对话中如有需要，会实时检索保守可靠的资料来源。',
     audiences: {
+      children: '儿童',
+      familyChildren: '儿童家庭灵修',
+      family: '家庭灵修',
       adult: '主日讲道 / 成人课程',
-      children: '儿童 / 家庭灵修',
-      personal: '个人灵修',
       advanced: '高级教师 / 神学院',
     },
     modes: {
       nt: {
         label: '新约释经教导',
-        summary: '以保守的新约释经为主，并带有时代论和前千禧年倾向。',
+        summary: '以保守的新约释经为主，并保持清楚、以文本为中心的重点。',
       },
       puritan: {
         label: '清教徒',
@@ -319,11 +323,11 @@ const translations = {
     siteTitle: '강해 성경 가르침',
     lead:
       '보수적이고 강해적이며 개혁주의적인 대화를 위해 조정되는 따뜻한 성경 연구 및 가르침 도우미입니다.',
-    modeSectionTitle: '가르침 모드',
-    modeSectionIntro: '전체 대화를 이끌 방향을 선택하세요.',
+    modeSectionTitle: '가르침 출처',
+    modeSectionIntro: '대화의 목소리와 인용 방향을 결정할 출처 흐름을 선택하세요.',
     setupSectionTitle: '대화 설정',
-    setupSectionIntro: '청중에 맞게 어조를 조정하세요.',
-    audienceLabel: '청중',
+    setupSectionIntro: '설명을 쉬운 언어에서 상급 교사와 신학교 수준까지 조절하세요.',
+    audienceLabel: '대화 수준',
     profileEyebrow: '현재 프로필',
     languageLabel: '언어',
     newConversation: '새 대화',
@@ -338,15 +342,16 @@ const translations = {
     starterLabels: ['설교 개요', '구절 의미', '묵상'],
     profileOnline: '필요할 때 대화 중에 보수적이고 신뢰할 수 있는 자료를 실시간으로 찾습니다.',
     audiences: {
+      children: '어린이',
+      familyChildren: '어린이 가족 묵상',
+      family: '가정 묵상',
       adult: '주일 설교 / 성인 반',
-      children: '어린이 / 가정 묵상',
-      personal: '개인 묵상',
       advanced: '상급 교사 / 신학교',
     },
     modes: {
       nt: {
         label: '신약 강해 가르침',
-        summary: '보수적인 신약 강해에 세대주의와 전천년설의 강조를 둡니다.',
+        summary: '보수적인 신약 강해를 분명하고 본문 중심의 초점으로 전합니다.',
       },
       puritan: {
         label: '청교도',
@@ -391,11 +396,11 @@ const translations = {
     siteTitle: 'Ensino Bíblico Expositivo',
     lead:
       'Um assistente acolhedor de estudo bíblico e ensino, ajustado ao modo escolhido, com conversa reformada, conservadora e expositiva.',
-    modeSectionTitle: 'Modo de ensino',
-    modeSectionIntro: 'Escolha a linha que deve conduzir toda a conversa.',
+    modeSectionTitle: 'Fonte de ensino',
+    modeSectionIntro: 'Escolha a linha de fontes que deve moldar a voz e as citações da conversa.',
     setupSectionTitle: 'Configuração da conversa',
-    setupSectionIntro: 'Ajuste o tom ao seu público.',
-    audienceLabel: 'Público',
+    setupSectionIntro: 'Leve a explicação do simples e claro até a profundidade de um professor avançado e seminário.',
+    audienceLabel: 'Nível da conversa',
     profileEyebrow: 'Perfil ativo',
     languageLabel: 'Idioma',
     newConversation: 'Nova conversa',
@@ -412,16 +417,17 @@ const translations = {
     profileOnline:
       'Fontes conservadoras confiáveis são pesquisadas ao vivo durante a conversa quando necessário.',
     audiences: {
+      children: 'Crianças',
+      familyChildren: 'Devoção infantil em família',
+      family: 'Devoção em família',
       adult: 'Sermão de domingo / classe de adultos',
-      children: 'Crianças / devoção em família',
-      personal: 'Devoção pessoal',
       advanced: 'Professor avançado / seminário',
     },
     modes: {
       nt: {
         label: 'Ensino Expositivo do Novo Testamento',
         summary:
-          'Exposição conservadora do Novo Testamento com ênfase dispensacional e pré-milenista.',
+          'Exposição conservadora do Novo Testamento com foco claro e dirigido pelo texto.',
       },
       puritan: {
         label: 'Puritano',
@@ -468,11 +474,11 @@ const translations = {
     siteTitle: 'Mafundisho ya Biblia ya Ufafanuzi',
     lead:
       'Msaidizi wa joto wa kujifunza Biblia na kufundisha, unaoendana na hali uliyochagua, wenye mazungumzo ya Kireformed, kihafidhina, na ya ufafanuzi.',
-    modeSectionTitle: 'Njia ya mafundisho',
-    modeSectionIntro: 'Chagua mkondo utakaoongoza mazungumzo yote.',
+    modeSectionTitle: 'Chanzo cha mafundisho',
+    modeSectionIntro: 'Chagua mkondo wa vyanzo utakaoongoza sauti na marejeo ya mazungumzo.',
     setupSectionTitle: 'Mpangilio wa mazungumzo',
-    setupSectionIntro: 'Rekebisha sauti kulingana na hadhira yako.',
-    audienceLabel: 'Hadhira',
+    setupSectionIntro: 'Pandisha maelezo kutoka lugha rahisi hadi kina cha mwalimu wa juu na seminari.',
+    audienceLabel: 'Kiwango cha mazungumzo',
     profileEyebrow: 'Wasifu amilifu',
     languageLabel: 'Lugha',
     newConversation: 'Mazungumzo mapya',
@@ -489,9 +495,10 @@ const translations = {
     profileOnline:
       'Vyanzo vya kihafidhina vinavyotegemewa hutafutwa moja kwa moja wakati wa mazungumzo inapohitajika.',
     audiences: {
+      children: 'Watoto',
+      familyChildren: 'Ibada ya watoto ya kifamilia',
+      family: 'Ibada ya familia',
       adult: 'Mahubiri ya Jumapili / darasa la watu wazima',
-      children: 'Watoto / ibada ya familia',
-      personal: 'Ibada binafsi',
       advanced: 'Mwalimu wa juu / seminari',
     },
     modes: {
@@ -544,11 +551,11 @@ const translations = {
     siteTitle: 'Inyigisho ya Bibiliya Isobanura Ibyanditswe',
     lead:
       "Umufasha ushyushye wo kwiga Bibiliya no kwigisha, uhinduka bitewe n'uburyo wahisemo, ugendera ku biganiro by'Abareforme kandi byubahiriza insobanuro y'Ibyanditswe.",
-    modeSectionTitle: "Uburyo bwo kwigisha",
-    modeSectionIntro: "Hitamo umurongo ugomba kuyobora ikiganiro cyose.",
+    modeSectionTitle: "Inkomoko y'inyigisho",
+    modeSectionIntro: "Hitamo umurongo w'inkomoko ugomba kugena ijwi n'ibisubizo by'ikiganiro.",
     setupSectionTitle: "Igenamiterere ry'ikiganiro",
-    setupSectionIntro: "Hindura imvugo ijyane n'abakumva bawe.",
-    audienceLabel: "Abumva",
+    setupSectionIntro: "Shyira ibisobanuro kuva ku mvugo yoroshye kugera ku buhanga bw'umwigisha wo hejuru na seminari.",
+    audienceLabel: "Urwego rw'ikiganiro",
     profileEyebrow: "Umwirondoro ukora",
     languageLabel: "Ururimi",
     newConversation: "Ikiganiro gishya",
@@ -565,9 +572,10 @@ const translations = {
     profileOnline:
       "Aho bikenewe, hifashishwa imbuga zizewe kandi zihamye mu gihe cy'ikiganiro.",
     audiences: {
+      children: "Abana",
+      familyChildren: "Devotion y'abana mu muryango",
+      family: "Devotion y'umuryango",
       adult: "Inyigisho yo ku Cyumweru / ishuri ry'abakuru",
-      children: "Abana / devotion y'umuryango",
-      personal: "Devotion bwite",
       advanced: "Umwigisha wo hejuru / seminari",
     },
     modes: {
@@ -621,11 +629,11 @@ const translations = {
     siteTitle: '聖書釈解教導',
     lead:
       '保守的で釈解的、改革派的な対話のために調整される、温かい聖書学習と教育のアシスタントです。',
-    modeSectionTitle: '教導モード',
-    modeSectionIntro: '会話全体を導く流れを選んでください。',
+    modeSectionTitle: '教えの源',
+    modeSectionIntro: '会話の語り口と引用元を形づくる流れを選んでください。',
     setupSectionTitle: '会話設定',
-    setupSectionIntro: '聞き手に合う語り口に整えてください。',
-    audienceLabel: '対象',
+    setupSectionIntro: '説明をやさしい言葉から上級教師・神学校レベルまで整えてください。',
+    audienceLabel: '会話レベル',
     profileEyebrow: '現在の設定',
     languageLabel: '言語',
     newConversation: '新しい会話',
@@ -641,15 +649,16 @@ const translations = {
     starterLabels: ['説教アウトライン', '節の意味', 'ディボーション'],
     profileOnline: '必要なときには、会話中に保守的で信頼できる資料をリアルタイムで探します。',
     audiences: {
+      children: '子ども',
+      familyChildren: '子ども向け家庭ディボーション',
+      family: '家庭ディボーション',
       adult: '日曜説教 / 成人クラス',
-      children: '子ども / 家庭ディボーション',
-      personal: '個人ディボーション',
       advanced: '上級教師 / 神学校',
     },
     modes: {
       nt: {
         label: '新約釈解教導',
-        summary: '保守的な新約釈解を中心に、ディスペンセーション主義と千年王国前再臨の傾向を持ちます。',
+        summary: '保守的な新約釈解を、明確で本文中心の焦点で進めます。',
       },
       puritan: {
         label: 'ピューリタン',
@@ -694,11 +703,11 @@ const translations = {
     siteTitle: 'व्याख्यात्मक बाइबिल शिक्षण',
     lead:
       'एक गर्मजोशीभरा बाइबिल अध्ययन और शिक्षण सहायक, जो आपके चुने हुए मोड के अनुसार काम करता है और संरक्षणवादी, व्याख्यात्मक, सुधारवादी संवाद रखता है।',
-    modeSectionTitle: 'शिक्षण मोड',
-    modeSectionIntro: 'वह धारा चुनें जो पूरी बातचीत को दिशा दे।',
+    modeSectionTitle: 'शिक्षण स्रोत',
+    modeSectionIntro: 'वह स्रोत-धारा चुनिए जो बातचीत की आवाज़ और उद्धरणों को आकार दे।',
     setupSectionTitle: 'बातचीत की सेटिंग',
-    setupSectionIntro: 'अपने श्रोताओं के अनुसार शैली रखें।',
-    audienceLabel: 'श्रोता',
+    setupSectionIntro: 'व्याख्या को सरल भाषा से लेकर उन्नत शिक्षक और सेमिनरी की गहराई तक समायोजित कीजिए।',
+    audienceLabel: 'बातचीत स्तर',
     profileEyebrow: 'सक्रिय प्रोफ़ाइल',
     languageLabel: 'भाषा',
     newConversation: 'नई बातचीत',
@@ -714,15 +723,16 @@ const translations = {
     starterLabels: ['उपदेश रूपरेखा', 'पद का अर्थ', 'भक्ति'],
     profileOnline: 'जब आवश्यकता होती है, बातचीत के दौरान विश्वसनीय संरक्षणवादी स्रोतों को लाइव खोजा जाता है।',
     audiences: {
+      children: 'बच्चे',
+      familyChildren: 'बच्चों के लिए पारिवारिक भक्ति',
+      family: 'पारिवारिक भक्ति',
       adult: 'रविवार उपदेश / वयस्क कक्षा',
-      children: 'बच्चे / पारिवारिक भक्ति',
-      personal: 'व्यक्तिगत भक्ति',
       advanced: 'उन्नत शिक्षक / सेमिनरी',
     },
     modes: {
       nt: {
         label: 'नए नियम का व्याख्यात्मक शिक्षण',
-        summary: 'संरक्षणवादी नए नियम की व्याख्या, जिसमें डिस्पेन्सेशनल और प्रीमिलेनियल बल है।',
+        summary: 'संरक्षणवादी नए नियम की व्याख्या, जिसमें स्पष्ट और पाठ-केंद्रित जोर है।',
       },
       puritan: {
         label: 'प्यूरिटन',
@@ -1152,6 +1162,10 @@ function normalizeAudience(value) {
 
   if (audienceKeys.includes(raw)) {
     return raw;
+  }
+
+  if (raw === 'personal') {
+    return 'family';
   }
 
   for (const copy of Object.values(translations)) {

@@ -24,29 +24,6 @@
             conservative, expository, Reformed conversation.
           </p>
         </div>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2 id="modeSectionTitle">Teaching Mode</h2>
-            <p id="modeSectionIntro">Choose the stream that should steer the whole conversation.</p>
-          </div>
-          <div class="mode-grid" id="modeButtons"></div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2 id="setupSectionTitle">Conversation Setup</h2>
-            <p id="setupSectionIntro">Keep the tone fitted to your audience.</p>
-          </div>
-          <label class="field">
-            <span id="audienceLabel">Audience</span>
-            <select id="audienceSelect"></select>
-          </label>
-          <button class="ghost-button" id="newConversationButton" type="button">
-            New Conversation
-          </button>
-        </section>
-
       </aside>
 
       <main class="chat-column">
@@ -62,6 +39,30 @@
               <select id="languageSelect"></select>
             </label>
           </div>
+        </section>
+
+        <section class="control-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h2 id="modeSectionTitle">Teaching Source</h2>
+              <p id="modeSectionIntro">Choose the source stream that should shape the conversation.</p>
+            </div>
+            <div class="mode-grid" id="modeButtons"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2 id="setupSectionTitle">Conversation Setup</h2>
+              <p id="setupSectionIntro">Move the explanation from simple language to advanced depth.</p>
+            </div>
+            <label class="field">
+              <span id="audienceLabel">Conversation Level</span>
+              <select id="audienceSelect"></select>
+            </label>
+            <button class="ghost-button" id="newConversationButton" type="button">
+              New Conversation
+            </button>
+          </section>
         </section>
 
         <section class="chat-panel">
