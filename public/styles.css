@@ -3,12 +3,16 @@
   --muted: #63564a;
   --paper: #f7f1e5;
   --paper-strong: #fffaf1;
+  --paper-deep: #f2e8d4;
   --sand: #eadcc2;
   --oak: #6f4c33;
   --oak-deep: #43291e;
+  --oak-soft: #9f7d5f;
   --olive: #5c6845;
   --line: rgba(67, 41, 30, 0.14);
+  --line-strong: rgba(67, 41, 30, 0.22);
   --shadow: 0 18px 60px rgba(56, 36, 24, 0.15);
+  --shadow-soft: 0 10px 30px rgba(56, 36, 24, 0.08);
   --radius-lg: 26px;
   --radius-md: 18px;
   --radius-sm: 12px;
@@ -24,9 +28,10 @@ body {
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(173, 144, 97, 0.22), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(92, 104, 69, 0.18), transparent 26%),
-    linear-gradient(180deg, #f0e2c8 0%, #f7f1e5 48%, #efe0c2 100%);
+    radial-gradient(circle at top left, rgba(173, 144, 97, 0.28), transparent 28%),
+    radial-gradient(circle at 85% 12%, rgba(92, 104, 69, 0.12), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(92, 104, 69, 0.2), transparent 24%),
+    linear-gradient(180deg, #f2e4ca 0%, #f8f1e3 42%, #f0dfc0 100%);
 }
 
 body::before {
@@ -40,12 +45,25 @@ body::before {
   background-size: 24px 24px;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.24), transparent 16%),
+    radial-gradient(circle at 82% 76%, rgba(255, 255, 255, 0.18), transparent 14%);
+}
+
 .app-shell {
   position: relative;
   display: grid;
   grid-template-columns: minmax(320px, 380px) 1fr;
   gap: 24px;
   padding: 24px;
+  max-width: 1560px;
+  margin: 0 auto;
+  align-items: start;
 }
 
 .sidebar,
@@ -55,13 +73,22 @@ body::before {
   gap: 20px;
 }
 
+.sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.chat-column {
+  min-width: 0;
+}
+
 .brand-card,
 .panel,
 .hero-card,
 .chat-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255, 250, 241, 0.9);
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(249, 241, 227, 0.88));
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
@@ -70,6 +97,23 @@ body::before {
 .panel,
 .hero-card {
   padding: 24px;
+}
+
+.brand-card,
+.hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-card::before,
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top right, rgba(111, 76, 51, 0.12), transparent 28%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.18), transparent 35%);
 }
 
 .brand-card h1,
@@ -81,9 +125,10 @@ body::before {
 }
 
 .brand-card h1 {
-  margin-top: 8px;
+  margin-top: 0;
   font-size: clamp(2rem, 4vw, 3.1rem);
   line-height: 1.02;
+  max-width: 10ch;
 }
 
 .eyebrow {
@@ -93,6 +138,11 @@ body::before {
   text-transform: uppercase;
   color: var(--olive);
   font-weight: 700;
+}
+
+.brand-eyebrow {
+  margin-bottom: 14px;
+  color: var(--oak);
 }
 
 .lead,
@@ -113,6 +163,10 @@ body::before {
   margin-bottom: 16px;
 }
 
+.panel {
+  box-shadow: var(--shadow-soft);
+}
+
 .panel-head p {
   margin: 8px 0 0;
   line-height: 1.55;
@@ -125,13 +179,15 @@ body::before {
 
 .mode-button {
   width: 100%;
-  padding: 16px;
+  position: relative;
+  padding: 18px 18px 18px 20px;
   border: 1px solid rgba(67, 41, 30, 0.12);
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(255, 250, 241, 0.95), rgba(241, 230, 207, 0.8));
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 230, 207, 0.82));
   text-align: left;
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
 .mode-button:hover,
@@ -139,6 +195,11 @@ body::before {
 .ghost-button:hover,
 .primary-button:hover {
   transform: translateY(-1px);
+}
+
+.mode-button:hover {
+  border-color: rgba(67, 41, 30, 0.22);
+  box-shadow: 0 12px 24px rgba(56, 36, 24, 0.08);
 }
 
 .mode-button strong,
@@ -157,8 +218,19 @@ body::before {
 
 .mode-button.active {
   border-color: rgba(92, 104, 69, 0.5);
-  background: linear-gradient(180deg, rgba(92, 104, 69, 0.16), rgba(255, 250, 241, 0.92));
-  box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.16);
+  background: linear-gradient(180deg, rgba(92, 104, 69, 0.18), rgba(255, 250, 241, 0.94));
+  box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.16), 0 12px 26px rgba(56, 36, 24, 0.08);
+}
+
+.mode-button.active::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--olive), rgba(92, 104, 69, 0.3));
 }
 
 .field,
@@ -190,15 +262,16 @@ textarea {
   width: 100%;
   border: 1px solid rgba(67, 41, 30, 0.18);
   border-radius: var(--radius-sm);
-  background: var(--paper-strong);
+  background: rgba(255, 250, 241, 0.96);
   padding: 14px 16px;
   font: inherit;
   color: var(--ink);
+  box-shadow: inset 0 1px 2px rgba(67, 41, 30, 0.04);
 }
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 108px;
   line-height: 1.6;
 }
 
@@ -216,12 +289,14 @@ textarea {
   padding: 12px 16px;
   background: rgba(67, 41, 30, 0.08);
   color: var(--oak-deep);
+  box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.08);
 }
 
 .primary-button {
   padding: 13px 20px;
   background: linear-gradient(135deg, var(--oak), var(--oak-deep));
   color: #fff8ef;
+  box-shadow: 0 12px 22px rgba(67, 41, 30, 0.2);
 }
 
 .upload-form {
@@ -298,6 +373,7 @@ textarea {
   justify-content: space-between;
   gap: 18px;
   align-items: flex-start;
+  background: linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(242, 232, 212, 0.88));
 }
 
 .hero-badges {
@@ -309,17 +385,28 @@ textarea {
 .badge {
   padding: 9px 12px;
   border-radius: 999px;
-  background: rgba(92, 104, 69, 0.12);
+  background: rgba(92, 104, 69, 0.14);
   color: var(--oak-deep);
   font-size: 0.88rem;
   white-space: nowrap;
+  box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.08);
 }
 
 .chat-panel {
-  padding: 24px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
+}
+
+.conversation-shell {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(250, 243, 231, 0.78));
+  border: 1px solid rgba(67, 41, 30, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .message-list {
@@ -331,14 +418,15 @@ textarea {
 .message {
   max-width: min(860px, 100%);
   padding: 18px 20px;
-  border-radius: 22px;
+  border-radius: 24px;
   border: 1px solid rgba(67, 41, 30, 0.08);
-  background: rgba(255, 255, 255, 0.62);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(250, 243, 231, 0.82));
+  box-shadow: var(--shadow-soft);
 }
 
 .message.user {
   align-self: flex-end;
-  background: linear-gradient(135deg, rgba(111, 76, 51, 0.18), rgba(234, 220, 194, 0.66));
+  background: linear-gradient(135deg, rgba(111, 76, 51, 0.2), rgba(234, 220, 194, 0.78));
 }
 
 .message.assistant {
@@ -374,6 +462,7 @@ textarea {
   font-size: 0.83rem;
   color: var(--oak-deep);
   text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.08);
 }
 
 .message-citation:hover {
@@ -384,8 +473,11 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
+  padding: 18px;
+  border: 1px solid rgba(67, 41, 30, 0.08);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .starter-row {
@@ -396,8 +488,9 @@ textarea {
 
 .starter {
   padding: 10px 14px;
-  background: rgba(67, 41, 30, 0.07);
+  background: rgba(255, 250, 241, 0.94);
   color: var(--oak-deep);
+  box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.1);
 }
 
 .composer-actions {
@@ -414,15 +507,20 @@ textarea {
 @media (max-width: 980px) {
   .app-shell {
     grid-template-columns: 1fr;
+    padding: 16px;
   }
 
-  .chat-panel {
-    min-height: auto;
+  .sidebar {
+    position: static;
   }
 
   .hero-card,
   .composer-actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .brand-card h1 {
+    max-width: none;
   }
 }
