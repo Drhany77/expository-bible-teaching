@@ -40,8 +40,7 @@ const translations = {
     modes: {
       nt: {
         label: 'New Testament Expository Teaching',
-        summary:
-          'Conservative New Testament exposition with dispensational, premillennial emphasis.',
+        summary: 'Conservative New Testament exposition with a clear, text-driven focus.',
       },
       puritan: {
         label: 'Puritan',
@@ -115,7 +114,7 @@ const translations = {
     modes: {
       nt: {
         label: 'التعليم التفسيري للعهد الجديد',
-        summary: 'تفسير محافظ للعهد الجديد بتركيز تدبيري وألفي سابق.',
+        summary: 'تفسير محافظ للعهد الجديد بتركيز واضح قائم على النص.',
       },
       puritan: {
         label: 'البيوريتان',
@@ -189,8 +188,7 @@ const translations = {
     modes: {
       nt: {
         label: 'Enseignement expositif du Nouveau Testament',
-        summary:
-          'Exposition conservatrice du Nouveau Testament avec accent dispensationaliste et prémillénariste.',
+        summary: 'Exposition conservatrice du Nouveau Testament avec une lecture claire et centrée sur le texte.',
       },
       puritan: {
         label: 'Puritain',
@@ -486,8 +484,7 @@ const translations = {
     modes: {
       nt: {
         label: 'Mafundisho ya Ufafanuzi ya Agano Jipya',
-        summary:
-          'Ufafanuzi wa kihafidhina wa Agano Jipya wenye mkazo wa dispensationali na premilenia.',
+        summary: 'Ufafanuzi wa kihafidhina wa Agano Jipya wenye mkazo wazi unaotokana na maandiko.',
       },
       puritan: {
         label: 'Puritan',
@@ -564,7 +561,7 @@ const translations = {
       nt: {
         label: "Inyigisho Isobanura Ibyanditswe byo mu Isezerano Rishya",
         summary:
-          "Insobanuro zihamye z'Isezerano Rishya zifite umurongo wa dispensationali na premileniyumu.",
+          "Insobanuro zihamye z'Isezerano Rishya zifite umurongo usobanutse ushingiye ku nyandiko.",
       },
       puritan: {
         label: "Puritan",
