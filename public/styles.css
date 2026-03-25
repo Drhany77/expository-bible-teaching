@@ -553,10 +553,59 @@ textarea {
 }
 
 .message-list.show-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.intro-layout {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  align-content: stretch;
   gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.intro-overview {
+  padding: 16px;
+  border: 1px solid rgba(67, 41, 30, 0.08);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(244, 235, 217, 0.82));
+  box-shadow: var(--shadow-soft);
+}
+
+.intro-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.intro-overview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.intro-overview-card strong {
+  font-size: 1rem;
+  color: var(--oak-deep);
+}
+
+.intro-overview-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.52;
+  font-size: 0.91rem;
+}
+
+.intro-kicker {
+  margin: 0;
+  color: var(--olive);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
 .message {
@@ -597,16 +646,17 @@ textarea {
   gap: 12px;
   margin-top: 0;
   padding-top: 0;
-  min-height: 100%;
+  min-height: 0;
   align-content: stretch;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: minmax(0, 1fr);
 }
 
 .intro-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
   min-height: 0;
   height: 100%;
   padding: 18px;
@@ -641,6 +691,7 @@ textarea {
   color: var(--muted);
   line-height: 1.56;
   font-size: 0.94rem;
+  margin: 0;
 }
 
 .message-citations {
@@ -767,6 +818,12 @@ html[dir="rtl"] .brand-signoff {
   .intro-grid {
     grid-template-columns: 1fr;
     min-height: auto;
+  }
+
+  .intro-layout,
+  .intro-overview-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
   .hero-select {

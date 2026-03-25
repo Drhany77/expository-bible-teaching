@@ -1040,6 +1040,26 @@ function renderMessages() {
 
   if (showIntroState) {
     messageList.classList.add('show-intro');
+    const introLayout = document.createElement('section');
+    introLayout.className = 'intro-layout';
+
+    const overview = document.createElement('section');
+    overview.className = 'intro-overview';
+    overview.innerHTML = `
+      <div class="intro-overview-grid">
+        <article class="intro-overview-card">
+          <p class="intro-kicker">${copy.modeSectionTitle}</p>
+          <strong>${copy.modes[state.mode].label}</strong>
+          <p>${copy.modes[state.mode].summary}</p>
+        </article>
+        <article class="intro-overview-card">
+          <p class="intro-kicker">${copy.audienceLabel}</p>
+          <strong>${copy.audiences[state.audience]}</strong>
+          <p>${copy.helperText}</p>
+        </article>
+      </div>
+    `;
+
     const introGrid = document.createElement('section');
     introGrid.className = 'intro-grid';
 
@@ -1058,7 +1078,9 @@ function renderMessages() {
       introGrid.appendChild(card);
     });
 
-    messageList.appendChild(introGrid);
+    introLayout.appendChild(overview);
+    introLayout.appendChild(introGrid);
+    messageList.appendChild(introLayout);
   }
 
   messageList.scrollTop = messageList.scrollHeight;
