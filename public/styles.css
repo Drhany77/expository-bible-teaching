@@ -316,18 +316,16 @@ textarea {
 }
 
 .chat-panel {
-  min-height: calc(100vh - 72px);
   padding: 24px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .message-list {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 380px;
 }
 
 .message {
@@ -386,7 +384,6 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
