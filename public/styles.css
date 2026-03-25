@@ -58,26 +58,30 @@ body::after {
 .app-shell {
   position: relative;
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: 332px minmax(0, 1fr);
+  gap: 20px;
   padding: 18px;
-  max-width: 1520px;
+  max-width: 1480px;
   margin: 0 auto;
   min-height: calc(100vh - 36px);
-  align-items: start;
+  align-items: stretch;
 }
 
 .sidebar,
 .main-column {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  min-height: 0;
 }
 
 .sidebar {
   position: sticky;
   top: 18px;
   align-self: start;
+  min-height: calc(100vh - 36px);
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
 }
 
 .main-column {
@@ -100,7 +104,7 @@ body::after {
 .brand-card,
 .panel,
 .hero-card {
-  padding: 18px;
+  padding: 20px;
 }
 
 .brand-card,
@@ -120,6 +124,17 @@ body::after {
     linear-gradient(140deg, rgba(255, 255, 255, 0.18), transparent 35%);
 }
 
+.brand-card::after,
+.hero-card::after,
+.chat-panel::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 76, 51, 0.16), transparent);
+  pointer-events: none;
+}
+
 .brand-card h1,
 .hero-card h2,
 .panel h2 {
@@ -130,7 +145,7 @@ body::after {
 
 .brand-card h1 {
   margin-top: 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.95rem, 3.4vw, 2.8rem);
   line-height: 1.04;
   max-width: 10ch;
 }
@@ -208,6 +223,16 @@ body::after {
 
 .panel {
   box-shadow: var(--shadow-soft);
+}
+
+.setup-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.setup-panel .field {
+  margin-top: 2px;
 }
 
 .panel-head p {
@@ -342,7 +367,7 @@ textarea {
 }
 
 .sidebar #newConversationButton {
-  margin-top: 12px;
+  margin-top: auto;
   width: 100%;
 }
 
@@ -482,6 +507,7 @@ textarea {
 }
 
 .chat-panel {
+  position: relative;
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -494,6 +520,7 @@ textarea {
 }
 
 .conversation-shell {
+  position: relative;
   padding: 14px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(250, 243, 231, 0.78));
@@ -502,6 +529,16 @@ textarea {
   flex: 1;
   display: flex;
   min-height: 0;
+}
+
+.conversation-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(92, 104, 69, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 35%);
 }
 
 .message-list {
@@ -513,6 +550,10 @@ textarea {
   overflow: auto;
   padding-right: 4px;
   scrollbar-gutter: stable;
+}
+
+.message-list.show-intro {
+  justify-content: flex-start;
 }
 
 .message {
@@ -545,6 +586,54 @@ textarea {
 .message-body {
   white-space: pre-wrap;
   line-height: 1.66;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.intro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 148px;
+  padding: 18px;
+  border: 1px solid rgba(67, 41, 30, 0.08);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(245, 235, 216, 0.84));
+  color: inherit;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(92, 104, 69, 0.2);
+  box-shadow: 0 14px 28px rgba(56, 36, 24, 0.1);
+}
+
+.intro-card-title {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(92, 104, 69, 0.12);
+  color: var(--oak-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.intro-card-copy {
+  color: var(--muted);
+  line-height: 1.56;
+  font-size: 0.94rem;
 }
 
 .message-citations {
@@ -648,9 +737,14 @@ html[dir="rtl"] .brand-signoff {
 
   .sidebar {
     position: static;
+    min-height: auto;
+    display: flex;
   }
 
-  .hero-card,
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+
   .composer-actions {
     flex-direction: column;
     align-items: flex-start;
@@ -661,6 +755,10 @@ html[dir="rtl"] .brand-signoff {
   .conversation-shell,
   .message-list {
     min-height: auto;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-select {

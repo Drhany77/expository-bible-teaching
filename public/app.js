@@ -1002,6 +1002,9 @@ function renderStarterButtons() {
 function renderMessages() {
   const copy = getCopy();
   messageList.innerHTML = '';
+  messageList.classList.remove('show-intro');
+
+  const showIntroState = state.messages.length === 1 && state.messages[0].role === 'assistant';
 
   state.messages.forEach((message) => {
     const fragment = messageTemplate.content.cloneNode(true);
@@ -1032,6 +1035,29 @@ function renderMessages() {
 
     messageList.appendChild(fragment);
   });
+
+  if (showIntroState) {
+    messageList.classList.add('show-intro');
+    const introGrid = document.createElement('section');
+    introGrid.className = 'intro-grid';
+
+    copy.starterPrompts[state.mode].forEach((starterText, index) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'intro-card';
+      card.innerHTML = `
+        <span class="intro-card-title">${starterLabelForIndex(index)}</span>
+        <span class="intro-card-copy">${starterText}</span>
+      `;
+      card.addEventListener('click', () => {
+        messageInput.value = starterText;
+        messageInput.focus();
+      });
+      introGrid.appendChild(card);
+    });
+
+    messageList.appendChild(introGrid);
+  }
 
   messageList.scrollTop = messageList.scrollHeight;
 }
