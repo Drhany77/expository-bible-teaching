@@ -2,6 +2,18 @@ const storageKey = 'expository-bible-teaching-state';
 const modeKeys = ['nt', 'puritan', 'all'];
 const audienceKeys = ['adult', 'children', 'personal', 'advanced'];
 const languageOrder = ['en', 'ar', 'fr', 'pt', 'sw', 'rw', 'zh', 'ko', 'ja', 'hi'];
+const brandCredits = {
+  en: 'Created and operated by NuruMed',
+  ar: 'تم إنشاؤه وتشغيله بواسطة NuruMed',
+  fr: 'Créé et exploité par NuruMed',
+  pt: 'Criado e operado pela NuruMed',
+  sw: 'Imeundwa na kuendeshwa na NuruMed',
+  rw: 'Yakozwe kandi icungwa na NuruMed',
+  zh: '由 NuruMed 创建并运营',
+  ko: 'NuruMed가 개발하고 운영합니다',
+  ja: 'NuruMed により開発・運営',
+  hi: 'NuruMed द्वारा निर्मित और संचालित',
+};
 
 const translations = {
   en: {
@@ -754,6 +766,7 @@ let isBusy = false;
 
 const brandTitle = document.getElementById('brandTitle');
 const brandLead = document.getElementById('brandLead');
+const brandCredit = document.getElementById('brandCredit');
 const modeSectionTitle = document.getElementById('modeSectionTitle');
 const modeSectionIntro = document.getElementById('modeSectionIntro');
 const setupSectionTitle = document.getElementById('setupSectionTitle');
@@ -879,6 +892,7 @@ function applyInterfaceLanguage() {
 
   brandTitle.textContent = copy.siteTitle;
   brandLead.textContent = copy.lead;
+  brandCredit.textContent = brandCredits[state.language] || brandCredits.en;
   modeSectionTitle.textContent = copy.modeSectionTitle;
   modeSectionIntro.textContent = copy.modeSectionIntro;
   setupSectionTitle.textContent = copy.setupSectionTitle;
