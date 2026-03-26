@@ -15,6 +15,19 @@ const brandCredits = {
   hi: 'NuruMed द्वारा निर्मित और विकसित',
 };
 
+const copyActionCatalog = {
+  en: { copy: 'Copy', copied: 'Copied', failed: 'Copy failed' },
+  ar: { copy: 'نسخ', copied: 'تم النسخ', failed: 'فشل النسخ' },
+  fr: { copy: 'Copier', copied: 'Copié', failed: 'Échec de la copie' },
+  pt: { copy: 'Copiar', copied: 'Copiado', failed: 'Falha ao copiar' },
+  sw: { copy: 'Nakili', copied: 'Imenakiliwa', failed: 'Imeshindikana kunakili' },
+  rw: { copy: 'Koporora', copied: 'Byakoporowe', failed: 'Koporora byanze' },
+  zh: { copy: '复制', copied: '已复制', failed: '复制失败' },
+  ko: { copy: '복사', copied: '복사됨', failed: '복사 실패' },
+  ja: { copy: 'コピー', copied: 'コピー済み', failed: 'コピー失敗' },
+  hi: { copy: 'कॉपी', copied: 'कॉपी हो गया', failed: 'कॉपी असफल' },
+};
+
 const studyStarterCatalog = {
   en: {
     label: 'Expository Bible study',
@@ -1134,6 +1147,7 @@ function renderMessages() {
     const role = fragment.querySelector('.message-role');
     const body = fragment.querySelector('.message-body');
     const citations = fragment.querySelector('.message-citations');
+    const actions = fragment.querySelector('.message-actions');
 
     article.classList.add(message.role);
     role.textContent = message.role === 'assistant' ? copy.assistantLabel : copy.youLabel;
@@ -1153,6 +1167,43 @@ function renderMessages() {
 
         citations.appendChild(chip);
       });
+    }
+
+    if (message.role === 'assistant' && message.content) {
+      const copyButton = document.createElement('button');
+      copyButton.type = 'button';
+      copyButton.className = 'message-action-button';
+      copyButton.innerHTML = `
+        <span class="message-action-icon" aria-hidden="true">${clipboardIcon()}</span>
+        <span class="message-action-label">${getCopyActionText().copy}</span>
+      `;
+      copyButton.setAttribute('aria-label', getCopyActionText().copy);
+      copyButton.addEventListener('click', async () => {
+        const labels = getCopyActionText();
+        const labelNode = copyButton.querySelector('.message-action-label');
+
+        try {
+          await copyTextToClipboard(message.content);
+          copyButton.classList.add('is-copied');
+          labelNode.textContent = labels.copied;
+          copyButton.setAttribute('aria-label', labels.copied);
+
+          window.setTimeout(() => {
+            copyButton.classList.remove('is-copied');
+            labelNode.textContent = labels.copy;
+            copyButton.setAttribute('aria-label', labels.copy);
+          }, 1800);
+        } catch (_error) {
+          labelNode.textContent = labels.failed;
+          copyButton.setAttribute('aria-label', labels.failed);
+
+          window.setTimeout(() => {
+            labelNode.textContent = labels.copy;
+            copyButton.setAttribute('aria-label', labels.copy);
+          }, 1800);
+        }
+      });
+      actions.appendChild(copyButton);
     }
 
     messageList.appendChild(fragment);
@@ -1327,6 +1378,43 @@ function getStarterItems(language = state.language, mode = state.mode) {
       prompt,
     })),
   ];
+}
+
+function getCopyActionText(language = state.language) {
+  return copyActionCatalog[normalizeLanguage(language)] || copyActionCatalog.en;
+}
+
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const helper = document.createElement('textarea');
+  helper.value = text;
+  helper.setAttribute('readonly', '');
+  helper.style.position = 'fixed';
+  helper.style.opacity = '0';
+  helper.style.pointerEvents = 'none';
+  document.body.appendChild(helper);
+  helper.select();
+  helper.setSelectionRange(0, helper.value.length);
+
+  const succeeded = document.execCommand('copy');
+  document.body.removeChild(helper);
+
+  if (!succeeded) {
+    throw new Error('Copy failed');
+  }
+}
+
+function clipboardIcon() {
+  return `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path>
+    </svg>
+  `;
 }
 
 function profileSummaryText(mode) {
