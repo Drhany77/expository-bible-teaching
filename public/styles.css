@@ -64,15 +64,14 @@ body::after {
   max-width: 1480px;
   margin: 0 auto;
   min-height: calc(100vh - 36px);
+  height: calc(100vh - 36px);
   align-items: stretch;
 }
 
 .sidebar,
 .main-column {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   min-height: 0;
+  height: 100%;
 }
 
 .sidebar {
@@ -82,11 +81,15 @@ body::after {
   min-height: calc(100vh - 36px);
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 16px;
 }
 
 .main-column {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 16px;
   min-width: 0;
-  min-height: calc(100vh - 36px);
+  min-height: 0;
 }
 
 .brand-card,
@@ -514,6 +517,7 @@ textarea {
   gap: 12px;
   min-width: 0;
   min-height: 0;
+  height: 100%;
   flex: 1;
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
@@ -789,12 +793,14 @@ html[dir="rtl"] .brand-signoff {
     grid-template-columns: 1fr;
     padding: 16px;
     min-height: auto;
+    height: auto;
   }
 
   .sidebar {
     position: static;
     min-height: auto;
     display: flex;
+    height: auto;
   }
 
   .hero-card {
@@ -811,6 +817,7 @@ html[dir="rtl"] .brand-signoff {
   .conversation-shell,
   .message-list {
     min-height: auto;
+    height: auto;
   }
 
   .intro-grid {
