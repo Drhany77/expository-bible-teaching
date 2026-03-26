@@ -1116,6 +1116,10 @@ function renderProfile() {
 }
 
 function renderStarterButtons() {
+  if (!starterRow) {
+    return;
+  }
+
   const starterItems = getStarterItems();
   starterRow.innerHTML = '';
 
