@@ -15,6 +15,112 @@ const brandCredits = {
   hi: 'NuruMed द्वारा निर्मित और विकसित',
 };
 
+const studyStarterCatalog = {
+  en: {
+    label: 'Expository Bible study',
+    prompts: {
+      nt: 'Prepare an extensive expository Bible study report on Romans 3:21-26. Keep going until the report is fully complete.',
+      puritan:
+        'Prepare an extensive expository Bible study report on Psalm 51 in the Puritan stream. Keep going until the report is fully complete.',
+      all:
+        'Prepare an extensive expository Bible study report on Romans 3:21-26, drawing on classic and modern conservative Reformed voices. Keep going until the report is fully complete.',
+    },
+  },
+  ar: {
+    label: 'دراسة كتابية تفسيرية',
+    prompts: {
+      nt: 'أعد دراسة كتابية تفسيرية مطولة لرومية 3: 21-26. استمر حتى يكتمل التقرير بالكامل.',
+      puritan:
+        'أعد دراسة كتابية تفسيرية مطولة للمزمور 51 ضمن التيار البيوريتاني. استمر حتى يكتمل التقرير بالكامل.',
+      all:
+        'أعد دراسة كتابية تفسيرية مطولة لرومية 3: 21-26 مع الاستفادة من الأصوات الإصلاحية الكلاسيكية والحديثة. استمر حتى يكتمل التقرير بالكامل.',
+    },
+  },
+  fr: {
+    label: 'Étude biblique expositive',
+    prompts: {
+      nt:
+        'Prépare une étude biblique expositive détaillée sur Romains 3:21-26. Continue jusqu’à ce que le rapport soit entièrement terminé.',
+      puritan:
+        'Prépare une étude biblique expositive détaillée sur le Psaume 51 dans la ligne puritaine. Continue jusqu’à ce que le rapport soit entièrement terminé.',
+      all:
+        'Prépare une étude biblique expositive détaillée sur Romains 3:21-26 en faisant appel aux voix réformées classiques et modernes. Continue jusqu’à ce que le rapport soit entièrement terminé.',
+    },
+  },
+  pt: {
+    label: 'Estudo bíblico expositivo',
+    prompts: {
+      nt:
+        'Prepare um estudo bíblico expositivo extenso sobre Romanos 3:21-26. Continue até que o relatório esteja completamente concluído.',
+      puritan:
+        'Prepare um estudo bíblico expositivo extenso sobre o Salmo 51 na linha puritana. Continue até que o relatório esteja completamente concluído.',
+      all:
+        'Prepare um estudo bíblico expositivo extenso sobre Romanos 3:21-26, recorrendo a vozes reformadas clássicas e modernas. Continue até que o relatório esteja completamente concluído.',
+    },
+  },
+  sw: {
+    label: 'Somo la Biblia la ufafanuzi',
+    prompts: {
+      nt:
+        'Andaa ripoti ndefu ya somo la Biblia la ufafanuzi juu ya Warumi 3:21-26. Endelea mpaka ripoti ikamilike kabisa.',
+      puritan:
+        'Andaa ripoti ndefu ya somo la Biblia la ufafanuzi juu ya Zaburi 51 katika mkondo wa Puritan. Endelea mpaka ripoti ikamilike kabisa.',
+      all:
+        'Andaa ripoti ndefu ya somo la Biblia la ufafanuzi juu ya Warumi 3:21-26 ukitumia sauti za kale na za kisasa za Kireformed. Endelea mpaka ripoti ikamilike kabisa.',
+    },
+  },
+  rw: {
+    label: "Inyigisho ya Bibiliya isobanura Ibyanditswe",
+    prompts: {
+      nt:
+        "Tegura raporo ndende y'inyigisho ya Bibiliya isobanura Ibyanditswe kuri Abaroma 3:21-26. Komeza kugeza raporo irangiye yose.",
+      puritan:
+        "Tegura raporo ndende y'inyigisho ya Bibiliya isobanura Ibyanditswe kuri Zaburi 51 mu murongo wa Puritan. Komeza kugeza raporo irangiye yose.",
+      all:
+        "Tegura raporo ndende y'inyigisho ya Bibiliya isobanura Ibyanditswe kuri Abaroma 3:21-26 ukoresheje amajwi ya Reforme ya kera n'aya none. Komeza kugeza raporo irangiye yose.",
+    },
+  },
+  zh: {
+    label: '释经式圣经学习',
+    prompts: {
+      nt: '请为罗马书 3:21-26 预备一份详细的释经式圣经学习报告，并持续写到完整结束。',
+      puritan: '请按清教徒路线为诗篇 51 篇预备一份详细的释经式圣经学习报告，并持续写到完整结束。',
+      all: '请为罗马书 3:21-26 预备一份详细的释经式圣经学习报告，结合经典与现代改革宗声音，并持续写到完整结束。',
+    },
+  },
+  ko: {
+    label: '강해 성경 공부',
+    prompts: {
+      nt: '로마서 3:21-26에 대한 자세한 강해 성경 공부 보고서를 준비해 주세요. 보고서가 완전히 끝날 때까지 계속해 주세요.',
+      puritan:
+        '시편 51편에 대한 청교도 전통의 자세한 강해 성경 공부 보고서를 준비해 주세요. 보고서가 완전히 끝날 때까지 계속해 주세요.',
+      all:
+        '로마서 3:21-26에 대한 자세한 강해 성경 공부 보고서를 준비해 주세요. 고전과 현대 개혁주의 음성을 함께 사용하고, 보고서가 완전히 끝날 때까지 계속해 주세요.',
+    },
+  },
+  ja: {
+    label: '聖書講解学習',
+    prompts: {
+      nt: 'ローマ3:21-26について、詳しい聖書講解学習レポートを作成してください。レポートが完全に終わるまで続けてください。',
+      puritan:
+        '詩篇51篇について、ピューリタンの流れに沿った詳しい聖書講解学習レポートを作成してください。レポートが完全に終わるまで続けてください。',
+      all:
+        'ローマ3:21-26について、古典的および現代の改革派の声を取り入れた詳しい聖書講解学習レポートを作成してください。レポートが完全に終わるまで続けてください。',
+    },
+  },
+  hi: {
+    label: 'व्याख्यात्मक बाइबल अध्ययन',
+    prompts: {
+      nt:
+        'रोमियों 3:21-26 पर एक विस्तृत व्याख्यात्मक बाइबल अध्ययन रिपोर्ट तैयार कीजिए। रिपोर्ट पूरी तरह समाप्त होने तक जारी रखिए।',
+      puritan:
+        'भजन संहिता 51 पर प्यूरिटन धारा में एक विस्तृत व्याख्यात्मक बाइबल अध्ययन रिपोर्ट तैयार कीजिए। रिपोर्ट पूरी तरह समाप्त होने तक जारी रखिए।',
+      all:
+        'रोमियों 3:21-26 पर एक विस्तृत व्याख्यात्मक बाइबल अध्ययन रिपोर्ट तैयार कीजिए जिसमें क्लासिक और आधुनिक सुधारित आवाज़ें शामिल हों। रिपोर्ट पूरी तरह समाप्त होने तक जारी रखिए।',
+    },
+  },
+};
+
 const translations = {
   en: {
     label: 'English',
@@ -997,17 +1103,17 @@ function renderProfile() {
 }
 
 function renderStarterButtons() {
-  const copy = getCopy();
+  const starterItems = getStarterItems();
   starterRow.innerHTML = '';
 
-  copy.starterPrompts[state.mode].forEach((starterText, index) => {
+  starterItems.forEach((starter) => {
     const button = document.createElement('button');
     button.className = 'starter';
     button.type = 'button';
-    button.dataset.starter = starterText;
-    button.textContent = starterLabelForIndex(index);
+    button.dataset.starter = starter.prompt;
+    button.textContent = starter.label;
     button.addEventListener('click', () => {
-      messageInput.value = starterText;
+      messageInput.value = starter.prompt;
       messageInput.focus();
     });
     starterRow.appendChild(button);
@@ -1077,16 +1183,16 @@ function renderMessages() {
     const introGrid = document.createElement('section');
     introGrid.className = 'intro-grid';
 
-    copy.starterPrompts[state.mode].forEach((starterText, index) => {
+    getStarterItems().forEach((starter) => {
       const card = document.createElement('button');
       card.type = 'button';
       card.className = 'intro-card';
       card.innerHTML = `
-        <span class="intro-card-title">${starterLabelForIndex(index)}</span>
-        <span class="intro-card-copy">${starterText}</span>
+        <span class="intro-card-title">${starter.label}</span>
+        <span class="intro-card-copy">${starter.prompt}</span>
       `;
       card.addEventListener('click', () => {
-        messageInput.value = starterText;
+        messageInput.value = starter.prompt;
         messageInput.focus();
       });
       introGrid.appendChild(card);
@@ -1205,8 +1311,22 @@ function sanitizeInitialAssistantMessage(messages, mode, language = 'en') {
   return sanitized;
 }
 
-function starterLabelForIndex(index) {
-  return getCopy().starterLabels[index] || getCopy().starterLabels[0];
+function getStarterItems(language = state.language, mode = state.mode) {
+  const copy = getCopy(language);
+  const starterCopy = studyStarterCatalog[normalizeLanguage(language)] || studyStarterCatalog.en;
+  const prompts = copy.starterPrompts[mode] || [];
+  const labels = copy.starterLabels || [];
+
+  return [
+    {
+      label: starterCopy.label,
+      prompt: starterCopy.prompts[mode] || starterCopy.prompts.all,
+    },
+    ...prompts.map((prompt, index) => ({
+      label: labels[index] || labels[0] || starterCopy.label,
+      prompt,
+    })),
+  ];
 }
 
 function profileSummaryText(mode) {
