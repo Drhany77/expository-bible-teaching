@@ -71,28 +71,22 @@ body::after {
   max-width: 1480px;
   margin: 0 auto;
   min-height: calc(100vh - 36px);
-  height: calc(100vh - 36px);
-  align-items: stretch;
+  align-items: start;
 }
 
 .sidebar,
 .main-column {
   min-height: 0;
-  height: 100%;
+  height: auto;
 }
 
 .sidebar {
-  position: sticky;
-  top: 18px;
+  position: relative;
+  top: auto;
   align-self: start;
-  min-height: calc(100vh - 36px);
-  max-height: calc(100vh - 36px);
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
   gap: 16px;
-  overflow-y: auto;
-  padding-right: 4px;
-  scrollbar-gutter: stable;
 }
 
 .main-column {
