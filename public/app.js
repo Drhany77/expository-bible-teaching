@@ -32,73 +32,66 @@ const messageActionCatalog = {
   en: {
     summarize: 'Summarize',
     expand: 'Expand',
-    sermon15: '15-minute sermon',
-    familyDevotion: 'Family devotion',
     pdf: 'PDF',
   },
   ar: {
     summarize: 'لخّص',
     expand: 'وسّع',
-    sermon15: 'عظة 15 دقيقة',
-    familyDevotion: 'تأمل عائلي',
     pdf: 'PDF',
   },
   fr: {
     summarize: 'Résumer',
     expand: 'Développer',
-    sermon15: 'Sermon 15 min',
-    familyDevotion: 'Méditation familiale',
     pdf: 'PDF',
   },
   pt: {
     summarize: 'Resumir',
     expand: 'Expandir',
-    sermon15: 'Sermão de 15 min',
-    familyDevotion: 'Devoção em família',
     pdf: 'PDF',
   },
   sw: {
     summarize: 'Fupisha',
     expand: 'Panua',
-    sermon15: 'Mahubiri ya dakika 15',
-    familyDevotion: 'Ibada ya familia',
     pdf: 'PDF',
   },
   rw: {
     summarize: 'Incamake',
     expand: 'Yagure',
-    sermon15: "Inyigisho y'iminota 15",
-    familyDevotion: "Devotion y'umuryango",
     pdf: 'PDF',
   },
   zh: {
     summarize: '总结',
     expand: '扩展',
-    sermon15: '15分钟讲章',
-    familyDevotion: '家庭灵修',
     pdf: 'PDF',
   },
   ko: {
     summarize: '요약',
     expand: '확장',
-    sermon15: '15분 설교',
-    familyDevotion: '가정 묵상',
     pdf: 'PDF',
   },
   ja: {
     summarize: '要約',
     expand: '展開',
-    sermon15: '15分説教',
-    familyDevotion: '家庭礼拝',
     pdf: 'PDF',
   },
   hi: {
     summarize: 'संक्षेप',
     expand: 'विस्तार',
-    sermon15: '15 मिनट का उपदेश',
-    familyDevotion: 'परिवारिक भक्ति',
     pdf: 'PDF',
   },
+};
+
+const messageMetaCatalog = {
+  en: { sourcesUsed: 'Sources used', localSource: 'Local source', webSource: 'Web source', exportTitle: 'Expository Bible Teaching' },
+  ar: { sourcesUsed: 'المصادر المستخدمة', localSource: 'مصدر محلي', webSource: 'مصدر ويب', exportTitle: 'التعليم الكتابي التفسيري' },
+  fr: { sourcesUsed: 'Sources utilisées', localSource: 'Source locale', webSource: 'Source web', exportTitle: 'Enseignement Biblique Expositif' },
+  pt: { sourcesUsed: 'Fontes usadas', localSource: 'Fonte local', webSource: 'Fonte web', exportTitle: 'Ensino Bíblico Expositivo' },
+  sw: { sourcesUsed: 'Vyanzo vilivyotumika', localSource: 'Chanzo cha ndani', webSource: 'Chanzo cha mtandaoni', exportTitle: 'Mafundisho ya Biblia ya Ufafanuzi' },
+  rw: { sourcesUsed: 'Inkomoko zakoreshejwe', localSource: 'Inkomoko yo mu bubiko', webSource: 'Inkomoko yo kuri interineti', exportTitle: 'Inyigisho ya Bibiliya Isobanura Ibyanditswe' },
+  zh: { sourcesUsed: '使用的来源', localSource: '本地来源', webSource: '网络来源', exportTitle: '解经式圣经教导' },
+  ko: { sourcesUsed: '사용한 출처', localSource: '로컬 출처', webSource: '웹 출처', exportTitle: '강해 성경 가르침' },
+  ja: { sourcesUsed: '使用した資料', localSource: 'ローカル資料', webSource: 'ウェブ資料', exportTitle: '聖書釈解教導' },
+  hi: { sourcesUsed: 'उपयोग किए गए स्रोत', localSource: 'स्थानीय स्रोत', webSource: 'वेब स्रोत', exportTitle: 'व्याख्यात्मक बाइबिल शिक्षण' },
 };
 
 const studyStarterCatalog = {
@@ -1175,19 +1168,7 @@ function renderMessages() {
     body.textContent = message.content;
 
     if (message.citations?.length) {
-      message.citations.forEach((citation) => {
-        const chip = citation.url ? document.createElement('a') : document.createElement('span');
-        chip.className = 'message-citation';
-        chip.textContent = citation.label || citation.filename || citation.url;
-
-        if (citation.url) {
-          chip.href = citation.url;
-          chip.target = '_blank';
-          chip.rel = 'noreferrer';
-        }
-
-        citations.appendChild(chip);
-      });
+      renderCitationPanel(citations, message.citations);
     }
 
     if (message.role === 'assistant' && message.content && state.messages.length > 1) {
@@ -1437,33 +1418,26 @@ function getMessageActionText(language = state.language) {
   return messageActionCatalog[normalizeLanguage(language)] || messageActionCatalog.en;
 }
 
+function getMessageMetaText(language = state.language) {
+  return messageMetaCatalog[normalizeLanguage(language)] || messageMetaCatalog.en;
+}
+
 function renderMessageActions(container, message) {
   const actionLabels = getMessageActionText();
   const actions = [
     { key: 'summarize', label: actionLabels.summarize, handler: () => runFollowUpAction('summarize', message) },
     { key: 'expand', label: actionLabels.expand, handler: () => runFollowUpAction('expand', message) },
-    { key: 'sermon15', label: actionLabels.sermon15, handler: () => runFollowUpAction('sermon15', message) },
-    { key: 'familyDevotion', label: actionLabels.familyDevotion, handler: () => runFollowUpAction('familyDevotion', message) },
     { key: 'pdf', label: actionLabels.pdf, handler: () => exportMessageAsPdf(message) },
   ];
 
   actions.forEach((action) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = action.key === 'copy' || action.key === 'pdf'
+    button.className = action.key === 'pdf'
       ? 'message-action-button'
       : 'message-followup-button';
     button.textContent = action.label;
-
-    if (action.key === 'copy') {
-      button.innerHTML = `
-        <span class="message-action-icon" aria-hidden="true">${clipboardIcon()}</span>
-        <span class="message-action-label">${action.label}</span>
-      `;
-      button.addEventListener('click', () => copyMessageAction(message, button));
-    } else {
-      button.addEventListener('click', action.handler);
-    }
+    button.addEventListener('click', action.handler);
     container.appendChild(button);
   });
 
@@ -1527,6 +1501,7 @@ function buildFollowUpPrompt(type, answerText) {
       'Summarize the assistant answer identified below.',
       'Keep the same theology, source stream, and main citations.',
       'Make it shorter, clearer, and easier to scan with headings.',
+      'Preserve the strongest quotations and source attributions in compact form.',
       `Target answer: "${excerpt}"`,
     ].join('\n');
   }
@@ -1536,26 +1511,7 @@ function buildFollowUpPrompt(type, answerText) {
       'Expand the assistant answer identified below.',
       'Keep the same theology and source faithfulness.',
       'Add more explanation, more application, and more approved sources if available.',
-      'End with a short Sources used section.',
-      `Target answer: "${excerpt}"`,
-    ].join('\n');
-  }
-
-  if (type === 'sermon15') {
-    return [
-      'Turn the assistant answer identified below into a 15-minute sermon outline.',
-      'Use clear movements, transitions, a short conclusion, and strong readability.',
-      'Keep the same theology and source fidelity.',
-      'End with a short Sources used section.',
-      `Target answer: "${excerpt}"`,
-    ].join('\n');
-  }
-
-  if (type === 'familyDevotion') {
-    return [
-      'Turn the assistant answer identified below into a family devotion.',
-      'Use simple explanation, a clear big idea, 3 discussion questions, and a short prayer.',
-      'Keep the same theology and source fidelity.',
+      'Use clear headings and section labels instead of one long narrative.',
       'End with a short Sources used section.',
       `Target answer: "${excerpt}"`,
     ].join('\n');
@@ -1571,26 +1527,66 @@ function createAnswerExcerpt(answerText) {
     .slice(0, 220);
 }
 
+function renderCitationPanel(container, citations) {
+  const metaText = getMessageMetaText();
+  const title = document.createElement('div');
+  title.className = 'message-citations-title';
+  title.textContent = metaText.sourcesUsed;
+  container.appendChild(title);
+
+  const list = document.createElement('div');
+  list.className = 'message-citation-list';
+
+  citations.forEach((citation) => {
+    const chip = citation.url ? document.createElement('a') : document.createElement('div');
+    const label = document.createElement('strong');
+    const meta = document.createElement('span');
+
+    chip.className = 'message-citation';
+    label.className = 'message-citation-label';
+    meta.className = 'message-citation-meta';
+
+    label.textContent = citation.label || citation.filename || citation.url;
+    meta.textContent = getCitationMetaLabel(citation);
+
+    if (citation.url) {
+      chip.href = citation.url;
+      chip.target = '_blank';
+      chip.rel = 'noreferrer';
+    }
+
+    chip.appendChild(label);
+    chip.appendChild(meta);
+    list.appendChild(chip);
+  });
+
+  container.appendChild(list);
+}
+
 function exportMessageAsPdf(message) {
   const exportWindow = window.open('', '_blank');
+  const metaText = getMessageMetaText();
 
   if (!exportWindow) {
     return;
   }
 
-  const title = `${document.title} - Export`;
-  const body = escapeHtml(message.content || '');
+  const title = `${metaText.exportTitle} - PDF`;
+  const body = formatMessageForExport(message.content || '');
   const citations = Array.isArray(message.citations) ? message.citations : [];
   const citationsHtml = citations.length
     ? `
       <section>
-        <h2>Sources</h2>
-        <ul>
+        <h2>${escapeHtml(metaText.sourcesUsed)}</h2>
+        <ul class="export-sources">
           ${citations
             .map((citation) => {
               const label = escapeHtml(citation.label || citation.filename || citation.url || '');
-              const url = citation.url ? ` — ${escapeHtml(citation.url)}` : '';
-              return `<li>${label}${url}</li>`;
+              const detail = escapeHtml(getCitationMetaLabel(citation));
+              const url = citation.url
+                ? `<a href="${escapeHtml(citation.url)}">${escapeHtml(citation.url)}</a>`
+                : '';
+              return `<li><strong>${label}</strong><span>${detail}</span>${url ? `<span>${url}</span>` : ''}</li>`;
             })
             .join('')}
         </ul>
@@ -1605,15 +1601,24 @@ function exportMessageAsPdf(message) {
         <meta charset="utf-8" />
         <title>${escapeHtml(title)}</title>
         <style>
-          body { font-family: Georgia, "Times New Roman", serif; margin: 40px; color: #231b16; }
-          h1 { font-size: 28px; margin-bottom: 20px; }
-          h2 { font-size: 18px; margin-top: 28px; }
-          .content { white-space: pre-wrap; line-height: 1.65; font-size: 15px; }
-          ul { line-height: 1.6; }
+          :root { color-scheme: light; }
+          body { font-family: "Avenir Next", "Segoe UI", sans-serif; margin: 40px; color: #231b16; }
+          h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; color: #2d1e16; }
+          h1 { font-size: 30px; margin-bottom: 10px; }
+          h2 { font-size: 20px; margin-top: 28px; margin-bottom: 8px; }
+          h3 { font-size: 17px; margin-top: 20px; margin-bottom: 8px; }
+          p, li { line-height: 1.68; font-size: 15px; }
+          .content p { margin: 0 0 12px; }
+          .content ul, .content ol { margin: 0 0 14px 22px; padding: 0; }
+          .export-sources { margin-top: 10px; padding-left: 20px; }
+          .export-sources li { margin-bottom: 10px; }
+          .export-sources strong, .export-sources span, .export-sources a { display: block; }
+          .export-sources span, .export-sources a { color: #5f554b; font-size: 14px; }
+          a { color: #6f4c33; text-decoration: none; }
         </style>
       </head>
       <body>
-        <h1>${escapeHtml(document.title)}</h1>
+        <h1>${escapeHtml(metaText.exportTitle)}</h1>
         <div class="content">${body}</div>
         ${citationsHtml}
       </body>
@@ -1631,6 +1636,98 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function formatMessageForExport(value) {
+  const lines = String(value || '').replace(/\r/g, '').split('\n');
+  const blocks = [];
+  let paragraph = [];
+  let listItems = [];
+  let listType = null;
+
+  const flushParagraph = () => {
+    if (!paragraph.length) {
+      return;
+    }
+
+    blocks.push(`<p>${escapeHtml(paragraph.join(' '))}</p>`);
+    paragraph = [];
+  };
+
+  const flushList = () => {
+    if (!listItems.length || !listType) {
+      return;
+    }
+
+    blocks.push(`<${listType}>${listItems.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</${listType}>`);
+    listItems = [];
+    listType = null;
+  };
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushParagraph();
+      flushList();
+      return;
+    }
+
+    const headingMatch = trimmed.match(/^(#{1,3})\s+(.*)$/);
+    if (headingMatch) {
+      flushParagraph();
+      flushList();
+      const level = Math.min(3, headingMatch[1].length + 1);
+      blocks.push(`<h${level}>${escapeHtml(headingMatch[2])}</h${level}>`);
+      return;
+    }
+
+    if (/^[-*•]\s+/.test(trimmed)) {
+      flushParagraph();
+      if (listType && listType !== 'ul') {
+        flushList();
+      }
+      listType = 'ul';
+      listItems.push(trimmed.replace(/^[-*•]\s+/, ''));
+      return;
+    }
+
+    if (/^\d+\.\s+/.test(trimmed)) {
+      flushParagraph();
+      if (listType && listType !== 'ol') {
+        flushList();
+      }
+      listType = 'ol';
+      listItems.push(trimmed.replace(/^\d+\.\s+/, ''));
+      return;
+    }
+
+    flushList();
+    paragraph.push(trimmed);
+  });
+
+  flushParagraph();
+  flushList();
+
+  return blocks.join('');
+}
+
+function getCitationMetaLabel(citation) {
+  const metaText = getMessageMetaText();
+
+  if (citation.url) {
+    return `${metaText.webSource} · ${formatCitationHost(citation.url)}`;
+  }
+
+  return `${metaText.localSource} · ${citation.filename || citation.label || ''}`.trim();
+}
+
+function formatCitationHost(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch (_error) {
+    return url;
+  }
 }
 
 async function copyTextToClipboard(text) {
