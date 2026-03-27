@@ -1,18 +1,22 @@
 :root {
-  --ink: #211b17;
-  --muted: #63564a;
-  --paper: #f7f1e5;
-  --paper-strong: #fffaf1;
-  --paper-deep: #f2e8d4;
-  --sand: #eadcc2;
-  --oak: #6f4c33;
-  --oak-deep: #43291e;
-  --oak-soft: #9f7d5f;
-  --olive: #5c6845;
-  --line: rgba(67, 41, 30, 0.14);
-  --line-strong: rgba(67, 41, 30, 0.22);
-  --shadow: 0 18px 60px rgba(56, 36, 24, 0.15);
-  --shadow-soft: 0 10px 30px rgba(56, 36, 24, 0.08);
+  --ink: #211913;
+  --muted: #64584d;
+  --paper: #f9f1df;
+  --paper-strong: #fffaf0;
+  --paper-deep: #efe3c7;
+  --sand: #e6d3ab;
+  --oak: #7a4f2a;
+  --oak-deep: #4e2f23;
+  --oak-soft: #b68255;
+  --olive: #5f7142;
+  --gold: #c9a34a;
+  --lapis: #315f8c;
+  --lapis-soft: #5f86a6;
+  --wine: #8a3f3b;
+  --line: rgba(78, 47, 35, 0.14);
+  --line-strong: rgba(78, 47, 35, 0.24);
+  --shadow: 0 18px 60px rgba(68, 45, 27, 0.16);
+  --shadow-soft: 0 10px 30px rgba(68, 45, 27, 0.1);
   --radius-lg: 26px;
   --radius-md: 18px;
   --radius-sm: 12px;
@@ -29,10 +33,11 @@ body {
   font-size: 17px;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(173, 144, 97, 0.2), transparent 28%),
-    radial-gradient(circle at 85% 12%, rgba(92, 104, 69, 0.08), transparent 18%),
-    radial-gradient(circle at bottom right, rgba(92, 104, 69, 0.12), transparent 24%),
-    linear-gradient(180deg, #f2e4ca 0%, #f8f1e3 42%, #f0dfc0 100%);
+    radial-gradient(circle at 8% 10%, rgba(201, 163, 74, 0.26), transparent 24%),
+    radial-gradient(circle at 92% 14%, rgba(49, 95, 140, 0.16), transparent 20%),
+    radial-gradient(circle at 18% 82%, rgba(95, 113, 66, 0.14), transparent 24%),
+    radial-gradient(circle at 88% 78%, rgba(138, 63, 59, 0.12), transparent 20%),
+    linear-gradient(180deg, #f4e3bc 0%, #fbf4e7 38%, #ecd9b0 100%);
 }
 
 body::before {
@@ -52,7 +57,8 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.24), transparent 16%),
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.26), transparent 16%),
+    radial-gradient(circle at 68% 24%, rgba(201, 163, 74, 0.08), transparent 12%),
     radial-gradient(circle at 82% 76%, rgba(255, 255, 255, 0.18), transparent 14%);
 }
 
@@ -99,7 +105,9 @@ body::after {
 .chat-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(249, 241, 227, 0.88));
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.97), rgba(247, 237, 214, 0.9)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.06), rgba(49, 95, 140, 0.04));
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -124,8 +132,9 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at top right, rgba(111, 76, 51, 0.12), transparent 28%),
-    linear-gradient(140deg, rgba(255, 255, 255, 0.18), transparent 35%);
+    radial-gradient(circle at top right, rgba(201, 163, 74, 0.18), transparent 28%),
+    radial-gradient(circle at 22% 84%, rgba(49, 95, 140, 0.08), transparent 24%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.2), transparent 35%);
 }
 
 .brand-card::after,
@@ -135,7 +144,7 @@ body::after {
   position: absolute;
   inset: auto 0 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(111, 76, 51, 0.16), transparent);
+  background: linear-gradient(90deg, transparent, rgba(122, 79, 42, 0.16), rgba(49, 95, 140, 0.16), transparent);
   pointer-events: none;
 }
 
@@ -256,7 +265,9 @@ body::after {
   padding: 14px 15px 14px 18px;
   border: 1px solid rgba(67, 41, 30, 0.12);
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 230, 207, 0.82));
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 230, 207, 0.84)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.06), rgba(49, 95, 140, 0.04));
   text-align: left;
   cursor: pointer;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
@@ -271,8 +282,8 @@ body::after {
 }
 
 .mode-button:hover {
-  border-color: rgba(67, 41, 30, 0.22);
-  box-shadow: 0 12px 24px rgba(56, 36, 24, 0.08);
+  border-color: rgba(49, 95, 140, 0.24);
+  box-shadow: 0 14px 28px rgba(68, 45, 27, 0.12);
 }
 
 .mode-button strong,
@@ -291,9 +302,11 @@ body::after {
 }
 
 .mode-button.active {
-  border-color: rgba(92, 104, 69, 0.5);
-  background: linear-gradient(180deg, rgba(92, 104, 69, 0.18), rgba(255, 250, 241, 0.94));
-  box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.16), 0 12px 26px rgba(56, 36, 24, 0.08);
+  border-color: rgba(95, 113, 66, 0.42);
+  background:
+    linear-gradient(180deg, rgba(95, 113, 66, 0.2), rgba(255, 250, 241, 0.94)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.12), rgba(49, 95, 140, 0.05));
+  box-shadow: inset 0 0 0 1px rgba(95, 113, 66, 0.14), 0 12px 26px rgba(68, 45, 27, 0.1);
 }
 
 .mode-button.active::before {
@@ -304,7 +317,7 @@ body::after {
   bottom: 14px;
   width: 4px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--olive), rgba(92, 104, 69, 0.3));
+  background: linear-gradient(180deg, var(--olive), var(--gold));
 }
 
 .field,
@@ -323,7 +336,7 @@ body::after {
   align-self: flex-start;
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(92, 104, 69, 0.12);
+  background: linear-gradient(135deg, rgba(95, 113, 66, 0.14), rgba(201, 163, 74, 0.14));
   color: var(--oak-deep);
   font-size: 0.96rem;
   font-weight: 700;
@@ -365,7 +378,7 @@ textarea {
 
 .ghost-button {
   padding: 12px 16px;
-  background: rgba(67, 41, 30, 0.08);
+  background: linear-gradient(180deg, rgba(122, 79, 42, 0.08), rgba(49, 95, 140, 0.04));
   color: var(--oak-deep);
   box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.08);
 }
@@ -377,9 +390,9 @@ textarea {
 
 .primary-button {
   padding: 13px 20px;
-  background: linear-gradient(135deg, var(--oak), var(--oak-deep));
+  background: linear-gradient(135deg, var(--wine), var(--oak-deep) 55%, var(--lapis));
   color: #fff8ef;
-  box-shadow: 0 12px 22px rgba(67, 41, 30, 0.2);
+  box-shadow: 0 14px 26px rgba(78, 47, 35, 0.24);
 }
 
 .upload-form {
@@ -456,7 +469,9 @@ textarea {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 16px;
   align-items: flex-start;
-  background: linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(242, 232, 212, 0.88));
+  background:
+    linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(242, 232, 212, 0.9)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.08), rgba(49, 95, 140, 0.06));
 }
 
 #profileTitle {
@@ -482,7 +497,9 @@ textarea {
   min-width: 190px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
-  background: rgba(255, 250, 241, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.82), rgba(244, 233, 208, 0.72)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.08), rgba(49, 95, 140, 0.04));
   border: 1px solid rgba(67, 41, 30, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
@@ -503,7 +520,7 @@ textarea {
 .badge {
   padding: 9px 12px;
   border-radius: 999px;
-  background: rgba(92, 104, 69, 0.14);
+  background: linear-gradient(135deg, rgba(95, 113, 66, 0.14), rgba(201, 163, 74, 0.18));
   color: var(--oak-deep);
   font-size: 0.93rem;
   white-space: nowrap;
@@ -521,14 +538,17 @@ textarea {
   height: 100%;
   flex: 1;
   background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92));
+    linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(246, 236, 218, 0.92)),
+    linear-gradient(180deg, rgba(49, 95, 140, 0.04), rgba(201, 163, 74, 0.05));
 }
 
 .conversation-shell {
   position: relative;
   padding: 14px;
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(250, 243, 231, 0.78));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(250, 243, 231, 0.8)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.04), rgba(49, 95, 140, 0.04));
   border: 1px solid rgba(67, 41, 30, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   flex: 1;
@@ -542,7 +562,8 @@ textarea {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at top left, rgba(92, 104, 69, 0.06), transparent 28%),
+    radial-gradient(circle at top left, rgba(95, 113, 66, 0.07), transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(49, 95, 140, 0.05), transparent 20%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 35%);
 }
 
@@ -575,7 +596,9 @@ textarea {
   padding: 16px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(244, 235, 217, 0.82));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(244, 235, 217, 0.84)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.07), rgba(49, 95, 140, 0.04));
   box-shadow: var(--shadow-soft);
 }
 
@@ -618,13 +641,16 @@ textarea {
   padding: 16px 18px;
   border-radius: 22px;
   border: 1px solid rgba(67, 41, 30, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(250, 243, 231, 0.82));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 243, 231, 0.84)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.05), rgba(49, 95, 140, 0.03));
   box-shadow: var(--shadow-soft);
 }
 
 .message.user {
   align-self: flex-end;
-  background: linear-gradient(135deg, rgba(111, 76, 51, 0.2), rgba(234, 220, 194, 0.78));
+  background:
+    linear-gradient(135deg, rgba(138, 63, 59, 0.18), rgba(201, 163, 74, 0.18), rgba(234, 220, 194, 0.8));
 }
 
 .message.assistant {
@@ -666,7 +692,9 @@ textarea {
   padding: 18px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(245, 235, 216, 0.84));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(245, 235, 216, 0.86)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.08), rgba(49, 95, 140, 0.04));
   color: inherit;
   text-align: left;
   box-shadow: var(--shadow-soft);
@@ -676,15 +704,15 @@ textarea {
 
 .intro-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(92, 104, 69, 0.2);
-  box-shadow: 0 14px 28px rgba(56, 36, 24, 0.1);
+  border-color: rgba(49, 95, 140, 0.18);
+  box-shadow: 0 16px 30px rgba(68, 45, 27, 0.12);
 }
 
 .intro-card-title {
   display: inline-flex;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(92, 104, 69, 0.12);
+  background: linear-gradient(135deg, rgba(95, 113, 66, 0.12), rgba(201, 163, 74, 0.18));
   color: var(--oak-deep);
   font-size: 0.84rem;
   font-weight: 700;
@@ -740,7 +768,9 @@ textarea {
   max-width: min(100%, 280px);
   padding: 10px 12px;
   border-radius: 16px;
-  background: rgba(92, 104, 69, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.88), rgba(242, 232, 210, 0.82)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.08), rgba(49, 95, 140, 0.04));
   color: var(--oak-deep);
   text-decoration: none;
   box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.08);
@@ -781,13 +811,13 @@ textarea {
 .message-action-button:hover,
 .message-followup-button:hover {
   transform: translateY(-1px);
-  background: rgba(67, 41, 30, 0.1);
+  background: linear-gradient(180deg, rgba(122, 79, 42, 0.1), rgba(49, 95, 140, 0.08));
   color: var(--oak-deep);
   box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.12), 0 10px 18px rgba(56, 36, 24, 0.08);
 }
 
 .message-action-button.is-copied {
-  background: rgba(92, 104, 69, 0.16);
+  background: linear-gradient(135deg, rgba(95, 113, 66, 0.16), rgba(201, 163, 74, 0.16));
   color: var(--olive);
   box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.14);
 }
@@ -814,7 +844,9 @@ textarea {
   padding: 14px;
   border: 1px solid rgba(67, 41, 30, 0.08);
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92));
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.06), rgba(49, 95, 140, 0.03));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
@@ -826,7 +858,7 @@ textarea {
 
 .starter {
   padding: 9px 13px;
-  background: rgba(255, 250, 241, 0.94);
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.94), rgba(244, 232, 207, 0.88));
   color: var(--oak-deep);
   box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.1);
 }
