@@ -1151,9 +1151,15 @@ function renderMessages() {
   const copy = getCopy();
   messageList.innerHTML = '';
   messageList.classList.remove('show-intro');
+  messageList.classList.remove('has-history');
 
   const showIntroState = state.messages.length === 1 && state.messages[0].role === 'assistant';
   chatPanel.classList.toggle('is-empty', showIntroState);
+  chatPanel.classList.toggle('has-history', !showIntroState);
+
+  if (!showIntroState) {
+    messageList.classList.add('has-history');
+  }
 
   state.messages.forEach((message) => {
     const fragment = messageTemplate.content.cloneNode(true);

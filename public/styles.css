@@ -578,6 +578,10 @@ textarea {
   scrollbar-gutter: stable;
 }
 
+.message-list.has-history {
+  justify-content: flex-end;
+}
+
 .message-list.show-intro {
   display: flex;
   flex-direction: column;
