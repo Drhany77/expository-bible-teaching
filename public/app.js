@@ -28,6 +28,79 @@ const copyActionCatalog = {
   hi: { copy: 'कॉपी', copied: 'कॉपी हो गया', failed: 'कॉपी असफल' },
 };
 
+const messageActionCatalog = {
+  en: {
+    summarize: 'Summarize',
+    expand: 'Expand',
+    sermon15: '15-minute sermon',
+    familyDevotion: 'Family devotion',
+    pdf: 'PDF',
+  },
+  ar: {
+    summarize: 'لخّص',
+    expand: 'وسّع',
+    sermon15: 'عظة 15 دقيقة',
+    familyDevotion: 'تأمل عائلي',
+    pdf: 'PDF',
+  },
+  fr: {
+    summarize: 'Résumer',
+    expand: 'Développer',
+    sermon15: 'Sermon 15 min',
+    familyDevotion: 'Méditation familiale',
+    pdf: 'PDF',
+  },
+  pt: {
+    summarize: 'Resumir',
+    expand: 'Expandir',
+    sermon15: 'Sermão de 15 min',
+    familyDevotion: 'Devoção em família',
+    pdf: 'PDF',
+  },
+  sw: {
+    summarize: 'Fupisha',
+    expand: 'Panua',
+    sermon15: 'Mahubiri ya dakika 15',
+    familyDevotion: 'Ibada ya familia',
+    pdf: 'PDF',
+  },
+  rw: {
+    summarize: 'Incamake',
+    expand: 'Yagure',
+    sermon15: "Inyigisho y'iminota 15",
+    familyDevotion: "Devotion y'umuryango",
+    pdf: 'PDF',
+  },
+  zh: {
+    summarize: '总结',
+    expand: '扩展',
+    sermon15: '15分钟讲章',
+    familyDevotion: '家庭灵修',
+    pdf: 'PDF',
+  },
+  ko: {
+    summarize: '요약',
+    expand: '확장',
+    sermon15: '15분 설교',
+    familyDevotion: '가정 묵상',
+    pdf: 'PDF',
+  },
+  ja: {
+    summarize: '要約',
+    expand: '展開',
+    sermon15: '15分説教',
+    familyDevotion: '家庭礼拝',
+    pdf: 'PDF',
+  },
+  hi: {
+    summarize: 'संक्षेप',
+    expand: 'विस्तार',
+    sermon15: '15 मिनट का उपदेश',
+    familyDevotion: 'परिवारिक भक्ति',
+    pdf: 'PDF',
+  },
+};
+
 const studyStarterCatalog = {
   en: {
     label: 'Expository Bible study',
@@ -961,64 +1034,8 @@ function attachEvents() {
   chatForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const message = messageInput.value.trim();
-
-    if (!message) {
-      return;
-    }
-
-    appendMessage({ role: 'user', content: message, citations: [] });
     messageInput.value = '';
-    renderMessages();
-
-    const history = state.messages
-      .slice(0, -1)
-      .map(({ role, content }) => ({ role, content }));
-
-    setBusy(true);
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sessionId: state.sessionId,
-          message,
-          mode: state.mode,
-          audience: state.audience,
-          language: state.language,
-          history,
-        }),
-      });
-
-      const payload = await response.json();
-      const copy = getCopy();
-
-      if (!response.ok) {
-        appendMessage({
-          role: 'assistant',
-          content: payload.reply || copy.requestDidNotFinish,
-          citations: [],
-        });
-      } else {
-        appendMessage({
-          role: 'assistant',
-          content: payload.reply,
-          citations: payload.citations || [],
-        });
-      }
-    } catch (_error) {
-      appendMessage({
-        role: 'assistant',
-        content: getCopy().requestFailed,
-        citations: [],
-      });
-    } finally {
-      setBusy(false);
-      renderMessages();
-      saveState();
-    }
+    await submitConversationMessage(message);
   });
 
   newConversationButton.addEventListener('click', () => {
@@ -1173,41 +1190,8 @@ function renderMessages() {
       });
     }
 
-    if (message.role === 'assistant' && message.content) {
-      const copyButton = document.createElement('button');
-      copyButton.type = 'button';
-      copyButton.className = 'message-action-button';
-      copyButton.innerHTML = `
-        <span class="message-action-icon" aria-hidden="true">${clipboardIcon()}</span>
-        <span class="message-action-label">${getCopyActionText().copy}</span>
-      `;
-      copyButton.setAttribute('aria-label', getCopyActionText().copy);
-      copyButton.addEventListener('click', async () => {
-        const labels = getCopyActionText();
-        const labelNode = copyButton.querySelector('.message-action-label');
-
-        try {
-          await copyTextToClipboard(message.content);
-          copyButton.classList.add('is-copied');
-          labelNode.textContent = labels.copied;
-          copyButton.setAttribute('aria-label', labels.copied);
-
-          window.setTimeout(() => {
-            copyButton.classList.remove('is-copied');
-            labelNode.textContent = labels.copy;
-            copyButton.setAttribute('aria-label', labels.copy);
-          }, 1800);
-        } catch (_error) {
-          labelNode.textContent = labels.failed;
-          copyButton.setAttribute('aria-label', labels.failed);
-
-          window.setTimeout(() => {
-            labelNode.textContent = labels.copy;
-            copyButton.setAttribute('aria-label', labels.copy);
-          }, 1800);
-        }
-      });
-      actions.appendChild(copyButton);
+    if (message.role === 'assistant' && message.content && state.messages.length > 1) {
+      renderMessageActions(actions, message);
     }
 
     messageList.appendChild(fragment);
@@ -1270,6 +1254,67 @@ async function refreshStatus() {
     saveState();
     renderProfile();
   } catch (_error) {}
+}
+
+async function submitConversationMessage(message) {
+  const trimmedMessage = String(message || '').trim();
+
+  if (!trimmedMessage || isBusy) {
+    return;
+  }
+
+  appendMessage({ role: 'user', content: trimmedMessage, citations: [] });
+  renderMessages();
+
+  const history = state.messages
+    .slice(0, -1)
+    .map(({ role, content }) => ({ role, content }));
+
+  setBusy(true);
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sessionId: state.sessionId,
+        message: trimmedMessage,
+        mode: state.mode,
+        audience: state.audience,
+        language: state.language,
+        history,
+      }),
+    });
+
+    const payload = await response.json();
+    const copy = getCopy();
+
+    if (!response.ok) {
+      appendMessage({
+        role: 'assistant',
+        content: payload.reply || copy.requestDidNotFinish,
+        citations: [],
+      });
+    } else {
+      appendMessage({
+        role: 'assistant',
+        content: payload.reply,
+        citations: payload.citations || [],
+      });
+    }
+  } catch (_error) {
+    appendMessage({
+      role: 'assistant',
+      content: getCopy().requestFailed,
+      citations: [],
+    });
+  } finally {
+    setBusy(false);
+    renderMessages();
+    saveState();
+  }
 }
 
 function appendMessage(message) {
@@ -1386,6 +1431,206 @@ function getStarterItems(language = state.language, mode = state.mode) {
 
 function getCopyActionText(language = state.language) {
   return copyActionCatalog[normalizeLanguage(language)] || copyActionCatalog.en;
+}
+
+function getMessageActionText(language = state.language) {
+  return messageActionCatalog[normalizeLanguage(language)] || messageActionCatalog.en;
+}
+
+function renderMessageActions(container, message) {
+  const actionLabels = getMessageActionText();
+  const actions = [
+    { key: 'summarize', label: actionLabels.summarize, handler: () => runFollowUpAction('summarize', message) },
+    { key: 'expand', label: actionLabels.expand, handler: () => runFollowUpAction('expand', message) },
+    { key: 'sermon15', label: actionLabels.sermon15, handler: () => runFollowUpAction('sermon15', message) },
+    { key: 'familyDevotion', label: actionLabels.familyDevotion, handler: () => runFollowUpAction('familyDevotion', message) },
+    { key: 'pdf', label: actionLabels.pdf, handler: () => exportMessageAsPdf(message) },
+  ];
+
+  actions.forEach((action) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = action.key === 'copy' || action.key === 'pdf'
+      ? 'message-action-button'
+      : 'message-followup-button';
+    button.textContent = action.label;
+
+    if (action.key === 'copy') {
+      button.innerHTML = `
+        <span class="message-action-icon" aria-hidden="true">${clipboardIcon()}</span>
+        <span class="message-action-label">${action.label}</span>
+      `;
+      button.addEventListener('click', () => copyMessageAction(message, button));
+    } else {
+      button.addEventListener('click', action.handler);
+    }
+    container.appendChild(button);
+  });
+
+  const copyButton = document.createElement('button');
+  copyButton.type = 'button';
+  copyButton.className = 'message-action-button';
+  copyButton.innerHTML = `
+    <span class="message-action-icon" aria-hidden="true">${clipboardIcon()}</span>
+    <span class="message-action-label">${getCopyActionText().copy}</span>
+  `;
+  copyButton.setAttribute('aria-label', getCopyActionText().copy);
+  copyButton.addEventListener('click', () => copyMessageAction(message, copyButton));
+  container.appendChild(copyButton);
+}
+
+async function copyMessageAction(message, button) {
+  const labels = getCopyActionText();
+  const labelNode = button?.querySelector('.message-action-label');
+
+  try {
+    await copyTextToClipboard(message.content);
+
+    if (button && labelNode) {
+      button.classList.add('is-copied');
+      labelNode.textContent = labels.copied;
+      button.setAttribute('aria-label', labels.copied);
+
+      window.setTimeout(() => {
+        button.classList.remove('is-copied');
+        labelNode.textContent = labels.copy;
+        button.setAttribute('aria-label', labels.copy);
+      }, 1800);
+    }
+  } catch (_error) {
+    if (button && labelNode) {
+      labelNode.textContent = labels.failed;
+      button.setAttribute('aria-label', labels.failed);
+
+      window.setTimeout(() => {
+        labelNode.textContent = labels.copy;
+        button.setAttribute('aria-label', labels.copy);
+      }, 1800);
+    }
+  }
+}
+
+function runFollowUpAction(type, message) {
+  if (isBusy) {
+    return;
+  }
+
+  const prompt = buildFollowUpPrompt(type, message.content);
+  void submitConversationMessage(prompt);
+}
+
+function buildFollowUpPrompt(type, answerText) {
+  const excerpt = createAnswerExcerpt(answerText);
+
+  if (type === 'summarize') {
+    return [
+      'Summarize the assistant answer identified below.',
+      'Keep the same theology, source stream, and main citations.',
+      'Make it shorter, clearer, and easier to scan with headings.',
+      `Target answer: "${excerpt}"`,
+    ].join('\n');
+  }
+
+  if (type === 'expand') {
+    return [
+      'Expand the assistant answer identified below.',
+      'Keep the same theology and source faithfulness.',
+      'Add more explanation, more application, and more approved sources if available.',
+      'End with a short Sources used section.',
+      `Target answer: "${excerpt}"`,
+    ].join('\n');
+  }
+
+  if (type === 'sermon15') {
+    return [
+      'Turn the assistant answer identified below into a 15-minute sermon outline.',
+      'Use clear movements, transitions, a short conclusion, and strong readability.',
+      'Keep the same theology and source fidelity.',
+      'End with a short Sources used section.',
+      `Target answer: "${excerpt}"`,
+    ].join('\n');
+  }
+
+  if (type === 'familyDevotion') {
+    return [
+      'Turn the assistant answer identified below into a family devotion.',
+      'Use simple explanation, a clear big idea, 3 discussion questions, and a short prayer.',
+      'Keep the same theology and source fidelity.',
+      'End with a short Sources used section.',
+      `Target answer: "${excerpt}"`,
+    ].join('\n');
+  }
+
+  return excerpt;
+}
+
+function createAnswerExcerpt(answerText) {
+  return String(answerText || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 220);
+}
+
+function exportMessageAsPdf(message) {
+  const exportWindow = window.open('', '_blank');
+
+  if (!exportWindow) {
+    return;
+  }
+
+  const title = `${document.title} - Export`;
+  const body = escapeHtml(message.content || '');
+  const citations = Array.isArray(message.citations) ? message.citations : [];
+  const citationsHtml = citations.length
+    ? `
+      <section>
+        <h2>Sources</h2>
+        <ul>
+          ${citations
+            .map((citation) => {
+              const label = escapeHtml(citation.label || citation.filename || citation.url || '');
+              const url = citation.url ? ` — ${escapeHtml(citation.url)}` : '';
+              return `<li>${label}${url}</li>`;
+            })
+            .join('')}
+        </ul>
+      </section>
+    `
+    : '';
+
+  exportWindow.document.write(`
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>${escapeHtml(title)}</title>
+        <style>
+          body { font-family: Georgia, "Times New Roman", serif; margin: 40px; color: #231b16; }
+          h1 { font-size: 28px; margin-bottom: 20px; }
+          h2 { font-size: 18px; margin-top: 28px; }
+          .content { white-space: pre-wrap; line-height: 1.65; font-size: 15px; }
+          ul { line-height: 1.6; }
+        </style>
+      </head>
+      <body>
+        <h1>${escapeHtml(document.title)}</h1>
+        <div class="content">${body}</div>
+        ${citationsHtml}
+      </body>
+    </html>
+  `);
+  exportWindow.document.close();
+  exportWindow.focus();
+  exportWindow.print();
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 async function copyTextToClipboard(text) {

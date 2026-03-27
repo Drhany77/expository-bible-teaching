@@ -708,6 +708,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .message.user .message-actions {
@@ -729,7 +730,8 @@ textarea {
   text-decoration: underline;
 }
 
-.message-action-button {
+.message-action-button,
+.message-followup-button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -745,7 +747,8 @@ textarea {
   transition: transform 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 
-.message-action-button:hover {
+.message-action-button:hover,
+.message-followup-button:hover {
   transform: translateY(-1px);
   background: rgba(67, 41, 30, 0.1);
   color: var(--oak-deep);
