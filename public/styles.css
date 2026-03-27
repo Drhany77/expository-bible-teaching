@@ -26,6 +26,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 17px;
   color: var(--ink);
   background:
     radial-gradient(circle at top left, rgba(173, 144, 97, 0.2), transparent 28%),
@@ -148,7 +149,7 @@ body::after {
 
 .brand-card h1 {
   margin-top: 0;
-  font-size: clamp(1.95rem, 3.4vw, 2.8rem);
+  font-size: clamp(2.12rem, 3.6vw, 3rem);
   line-height: 1.04;
   max-width: 10ch;
 }
@@ -179,14 +180,14 @@ body::after {
 .brand-name {
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 1.28rem;
+  font-size: 1.38rem;
   letter-spacing: -0.02em;
   color: var(--oak-deep);
 }
 
 .eyebrow {
   margin: 0;
-  font-size: 0.77rem;
+  font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--olive);
@@ -200,7 +201,7 @@ body::after {
 
 .brand-credit {
   margin: 0;
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   color: var(--muted);
   line-height: 1.45;
 }
@@ -217,7 +218,7 @@ body::after {
 .lead {
   margin: 10px 0 0;
   line-height: 1.56;
-  font-size: 0.96rem;
+  font-size: 1.02rem;
 }
 
 .panel-head {
@@ -241,7 +242,7 @@ body::after {
 .panel-head p {
   margin: 8px 0 0;
   line-height: 1.48;
-  font-size: 0.93rem;
+  font-size: 0.98rem;
 }
 
 .mode-grid {
@@ -277,7 +278,7 @@ body::after {
 .mode-button strong,
 .library-card strong {
   display: block;
-  font-size: 0.96rem;
+  font-size: 1.02rem;
   margin-bottom: 5px;
 }
 
@@ -285,7 +286,7 @@ body::after {
 .library-card span {
   display: block;
   line-height: 1.42;
-  font-size: 0.87rem;
+  font-size: 0.92rem;
   color: var(--muted);
 }
 
@@ -324,13 +325,13 @@ body::after {
   border-radius: 999px;
   background: rgba(92, 104, 69, 0.12);
   color: var(--oak-deep);
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   font-weight: 700;
 }
 
 .field span,
 .composer-field span {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
@@ -459,7 +460,7 @@ textarea {
 }
 
 #profileTitle {
-  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.92rem, 3vw, 2.45rem);
 }
 
 #profileSummary {
@@ -487,7 +488,7 @@ textarea {
 }
 
 .hero-select span {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--olive);
@@ -504,7 +505,7 @@ textarea {
   border-radius: 999px;
   background: rgba(92, 104, 69, 0.14);
   color: var(--oak-deep);
-  font-size: 0.88rem;
+  font-size: 0.93rem;
   white-space: nowrap;
   box-shadow: inset 0 0 0 1px rgba(92, 104, 69, 0.08);
 }
@@ -592,7 +593,7 @@ textarea {
 }
 
 .intro-overview-card strong {
-  font-size: 1rem;
+  font-size: 1.06rem;
   color: var(--oak-deep);
 }
 
@@ -600,7 +601,7 @@ textarea {
   margin: 0;
   color: var(--muted);
   line-height: 1.52;
-  font-size: 0.91rem;
+  font-size: 0.96rem;
 }
 
 .intro-kicker {
@@ -608,7 +609,7 @@ textarea {
   color: var(--olive);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
 }
 
@@ -632,7 +633,7 @@ textarea {
 
 .message-role {
   margin-bottom: 10px;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -642,6 +643,7 @@ textarea {
 .message-body {
   white-space: pre-wrap;
   line-height: 1.66;
+  font-size: 1.02rem;
 }
 
 .intro-grid {
@@ -684,7 +686,7 @@ textarea {
   border-radius: 999px;
   background: rgba(92, 104, 69, 0.12);
   color: var(--oak-deep);
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -692,7 +694,7 @@ textarea {
 .intro-card-copy {
   color: var(--muted);
   line-height: 1.56;
-  font-size: 0.94rem;
+  font-size: 0.99rem;
   margin: 0;
 }
 
@@ -705,7 +707,7 @@ textarea {
 }
 
 .message-citations-title {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--olive);
@@ -749,12 +751,12 @@ textarea {
 }
 
 .message-citation-label {
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   line-height: 1.35;
 }
 
 .message-citation-meta {
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.35;
 }
@@ -771,7 +773,7 @@ textarea {
   color: var(--muted);
   box-shadow: inset 0 0 0 1px rgba(67, 41, 30, 0.08);
   font: inherit;
-  font-size: 0.84rem;
+  font-size: 0.89rem;
   cursor: pointer;
   transition: transform 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
@@ -839,7 +841,7 @@ textarea {
 .helper-text {
   margin: 0;
   max-width: 70%;
-  font-size: 0.88rem;
+  font-size: 0.93rem;
   line-height: 1.45;
 }
 
@@ -973,7 +975,7 @@ html[dir="rtl"] .brand-signoff {
 
   .brand-card h1 {
     max-width: none;
-    font-size: clamp(1.8rem, 8vw, 2.35rem);
+    font-size: clamp(1.92rem, 8vw, 2.5rem);
   }
 
   .brand-logo {
@@ -1022,7 +1024,7 @@ html[dir="rtl"] .brand-signoff {
   }
 
   .brand-name {
-    font-size: 1.18rem;
+    font-size: 1.24rem;
   }
 
   .lead,
@@ -1032,7 +1034,7 @@ html[dir="rtl"] .brand-signoff {
   .intro-overview-card p,
   .message-body,
   .helper-text {
-    font-size: 0.92rem;
+    font-size: 0.97rem;
   }
 
   .hero-card,
