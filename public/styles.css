@@ -86,9 +86,13 @@ body::after {
   top: 18px;
   align-self: start;
   min-height: calc(100vh - 36px);
+  max-height: calc(100vh - 36px);
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   gap: 16px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
 }
 
 .main-column {
