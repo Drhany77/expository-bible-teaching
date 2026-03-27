@@ -6,6 +6,9 @@
     },
     "api/status.mjs": {
       "maxDuration": 10
+    },
+    "api/transcribe.mjs": {
+      "maxDuration": 30
     }
   }
 }

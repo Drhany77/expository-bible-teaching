@@ -872,6 +872,7 @@ textarea {
   justify-content: space-between;
   gap: 12px;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .helper-text {
@@ -881,8 +882,86 @@ textarea {
   line-height: 1.45;
 }
 
+.composer-button-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+}
+
 .send-button {
   min-width: 130px;
+}
+
+.mic-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  min-width: 62px;
+  height: 56px;
+  padding: 0;
+  border: 1px solid rgba(67, 41, 30, 0.12);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(241, 231, 213, 0.92)),
+    linear-gradient(135deg, rgba(201, 163, 74, 0.08), rgba(49, 95, 140, 0.04));
+  color: var(--oak-deep);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    0 10px 22px rgba(68, 45, 27, 0.08);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.mic-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(49, 95, 140, 0.26);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 14px 24px rgba(68, 45, 27, 0.12);
+}
+
+.mic-button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+
+.mic-button.is-recording {
+  border-color: rgba(138, 63, 59, 0.32);
+  background:
+    linear-gradient(180deg, rgba(200, 76, 71, 0.96), rgba(138, 63, 59, 0.98)),
+    linear-gradient(135deg, rgba(255, 173, 160, 0.22), rgba(138, 63, 59, 0.06));
+  color: #fffaf5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 16px 26px rgba(138, 63, 59, 0.22);
+}
+
+.mic-button.is-transcribing {
+  border-color: rgba(49, 95, 140, 0.18);
+  background:
+    linear-gradient(180deg, rgba(95, 134, 166, 0.22), rgba(255, 250, 241, 0.98)),
+    linear-gradient(135deg, rgba(49, 95, 140, 0.08), rgba(201, 163, 74, 0.05));
+  color: var(--lapis);
+}
+
+.mic-button-icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+}
+
+.mic-button-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 html[dir="rtl"] .brand-card,
@@ -911,6 +990,11 @@ html[dir="rtl"] .brand-header {
 
 html[dir="rtl"] .brand-signoff {
   align-items: flex-end;
+}
+
+html[dir="rtl"] .composer-button-group {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 @media (max-width: 980px) {
@@ -955,6 +1039,10 @@ html[dir="rtl"] .brand-signoff {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+  }
+
+  .composer-button-group {
+    width: 100%;
   }
 
   .main-column,
@@ -1021,6 +1109,11 @@ html[dir="rtl"] .brand-signoff {
 
   .helper-text {
     max-width: none;
+  }
+
+  .composer-button-group .send-button {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .send-button,
@@ -1139,6 +1232,16 @@ html[dir="rtl"] .brand-signoff {
 
   .composer-actions {
     align-items: stretch;
+  }
+
+  .composer-button-group {
+    gap: 8px;
+  }
+
+  .mic-button {
+    width: 56px;
+    min-width: 56px;
+    height: 52px;
   }
 
   .hero-select,

@@ -94,6 +94,109 @@ const messageMetaCatalog = {
   hi: { sourcesUsed: 'उपयोग किए गए स्रोत', localSource: 'स्थानीय स्रोत', webSource: 'वेब स्रोत', exportTitle: 'व्याख्यात्मक बाइबिल शिक्षण' },
 };
 
+const audioUiCatalog = {
+  en: {
+    start: 'Record audio',
+    stop: 'Stop recording',
+    recordingHint: 'Recording audio. Tap the mic again to stop.',
+    transcribingHint: 'Transcribing audio into the message box...',
+    unsupported: 'Audio recording is not supported in this browser.',
+    permissionDenied: 'Microphone access was denied.',
+    transcriptionFailed: 'Audio transcription failed. Please try again.',
+    noSpeech: 'No speech was detected. Try again.',
+  },
+  ar: {
+    start: 'تسجيل صوتي',
+    stop: 'إيقاف التسجيل',
+    recordingHint: 'يتم تسجيل الصوت الآن. اضغط الميكروفون مرة أخرى للإيقاف.',
+    transcribingHint: 'جارٍ تحويل الصوت إلى نص داخل مربع الرسالة...',
+    unsupported: 'تسجيل الصوت غير مدعوم في هذا المتصفح.',
+    permissionDenied: 'تم رفض الوصول إلى الميكروفون.',
+    transcriptionFailed: 'فشل تحويل الصوت إلى نص. حاول مرة أخرى.',
+    noSpeech: 'لم يتم اكتشاف كلام. حاول مرة أخرى.',
+  },
+  fr: {
+    start: "Enregistrer l'audio",
+    stop: "Arrêter l'enregistrement",
+    recordingHint: "L'audio est en cours d'enregistrement. Touchez à nouveau le micro pour arrêter.",
+    transcribingHint: "Transcription de l'audio dans la zone de message...",
+    unsupported: "L'enregistrement audio n'est pas pris en charge dans ce navigateur.",
+    permissionDenied: "L'accès au microphone a été refusé.",
+    transcriptionFailed: "La transcription audio a échoué. Réessayez.",
+    noSpeech: "Aucune parole n'a été détectée. Réessayez.",
+  },
+  pt: {
+    start: 'Gravar áudio',
+    stop: 'Parar gravação',
+    recordingHint: 'O áudio está sendo gravado. Toque no microfone novamente para parar.',
+    transcribingHint: 'Transcrevendo o áudio para a caixa de mensagem...',
+    unsupported: 'A gravação de áudio não é compatível com este navegador.',
+    permissionDenied: 'O acesso ao microfone foi negado.',
+    transcriptionFailed: 'A transcrição do áudio falhou. Tente novamente.',
+    noSpeech: 'Nenhuma fala foi detectada. Tente novamente.',
+  },
+  sw: {
+    start: 'Rekodi sauti',
+    stop: 'Acha kurekodi',
+    recordingHint: 'Sauti inarekodiwa. Gusa kipaza sauti tena ili kusimamisha.',
+    transcribingHint: 'Sauti inabadilishwa kuwa maandishi kwenye kisanduku cha ujumbe...',
+    unsupported: 'Kurekodi sauti hakutumiki kwenye kivinjari hiki.',
+    permissionDenied: 'Ruhusa ya kipaza sauti imekataliwa.',
+    transcriptionFailed: 'Kubadili sauti kuwa maandishi kumeshindikana. Jaribu tena.',
+    noSpeech: 'Hakuna sauti ya kuzungumza iliyopatikana. Jaribu tena.',
+  },
+  rw: {
+    start: 'Fata amajwi',
+    stop: 'Hagarika gufata amajwi',
+    recordingHint: 'Amajwi ari gufatwa. Kanda kuri mikorofofone nanone kugira ngo bihagarare.',
+    transcribingHint: 'Amajwi ari guhindurwa inyandiko mu gasanduku k’ubutumwa...',
+    unsupported: 'Gufata amajwi ntibikora kuri iyi browser.',
+    permissionDenied: 'Uburenganzira bwo gukoresha mikorofofone bwanzwe.',
+    transcriptionFailed: 'Guhindura amajwi mu nyandiko byanze. Ongera ugerageze.',
+    noSpeech: 'Nta mvugo yumvikanye. Ongera ugerageze.',
+  },
+  zh: {
+    start: '录音',
+    stop: '停止录音',
+    recordingHint: '正在录音。再次点击麦克风即可停止。',
+    transcribingHint: '正在把音频转写到消息框中...',
+    unsupported: '此浏览器不支持录音。',
+    permissionDenied: '麦克风权限被拒绝。',
+    transcriptionFailed: '音频转写失败，请重试。',
+    noSpeech: '没有检测到语音，请重试。',
+  },
+  ko: {
+    start: '음성 녹음',
+    stop: '녹음 중지',
+    recordingHint: '음성을 녹음 중입니다. 다시 누르면 중지됩니다.',
+    transcribingHint: '음성을 메시지 입력칸으로 옮기고 있습니다...',
+    unsupported: '이 브라우저에서는 음성 녹음이 지원되지 않습니다.',
+    permissionDenied: '마이크 접근이 거부되었습니다.',
+    transcriptionFailed: '음성 변환에 실패했습니다. 다시 시도해 주세요.',
+    noSpeech: '감지된 음성이 없습니다. 다시 시도해 주세요.',
+  },
+  ja: {
+    start: '音声を録音',
+    stop: '録音を停止',
+    recordingHint: '音声を録音しています。もう一度マイクを押すと停止します。',
+    transcribingHint: '音声をメッセージ欄に文字起こししています...',
+    unsupported: 'このブラウザでは音声録音に対応していません。',
+    permissionDenied: 'マイクへのアクセスが拒否されました。',
+    transcriptionFailed: '音声の文字起こしに失敗しました。もう一度お試しください。',
+    noSpeech: '音声が検出されませんでした。もう一度お試しください。',
+  },
+  hi: {
+    start: 'आवाज़ रिकॉर्ड करें',
+    stop: 'रिकॉर्डिंग रोकें',
+    recordingHint: 'आवाज़ रिकॉर्ड हो रही है। रोकने के लिए माइक को फिर दबाएँ।',
+    transcribingHint: 'आवाज़ को संदेश बॉक्स में लिखा जा रहा है...',
+    unsupported: 'इस ब्राउज़र में ऑडियो रिकॉर्डिंग समर्थित नहीं है।',
+    permissionDenied: 'माइक्रोफ़ोन की अनुमति अस्वीकार कर दी गई।',
+    transcriptionFailed: 'ऑडियो ट्रांसक्रिप्शन असफल रहा। फिर प्रयास करें।',
+    noSpeech: 'कोई आवाज़ नहीं मिली। फिर प्रयास करें।',
+  },
+};
+
 const studyStarterCatalog = {
   en: {
     label: 'Expository Bible study',
@@ -958,6 +1061,11 @@ const translations = {
 
 const state = loadState();
 let isBusy = false;
+let recorderState = 'idle';
+let composerNotice = { kind: 'default', key: null };
+let mediaRecorder = null;
+let mediaStream = null;
+let recordedChunks = [];
 
 const brandTitle = document.getElementById('brandTitle');
 const brandLead = document.getElementById('brandLead');
@@ -982,6 +1090,7 @@ const newConversationButton = document.getElementById('newConversationButton');
 const messageTemplate = document.getElementById('messageTemplate');
 const starterRow = document.querySelector('.starter-row');
 const sendButton = document.getElementById('sendButton');
+const micButton = document.getElementById('micButton');
 const chatPanel = document.querySelector('.chat-panel');
 
 init();
@@ -1024,6 +1133,10 @@ function attachEvents() {
     chatForm.requestSubmit();
   });
 
+  micButton?.addEventListener('click', async () => {
+    await toggleAudioRecording();
+  });
+
   chatForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const message = messageInput.value.trim();
@@ -1056,7 +1169,6 @@ function applyInterfaceLanguage() {
   languageLabel.textContent = copy.languageLabel;
   profileEyebrow.textContent = copy.profileEyebrow;
   newConversationButton.textContent = copy.newConversation;
-  helperText.textContent = copy.helperText;
   messageInput.placeholder = copy.placeholder;
 
   populateLanguageOptions();
@@ -1065,7 +1177,7 @@ function applyInterfaceLanguage() {
   renderStarterButtons();
   renderProfile();
   renderMessages();
-  setBusy(isBusy);
+  syncComposerState();
 }
 
 function populateLanguageOptions() {
@@ -1310,8 +1422,7 @@ function appendMessage(message) {
 
 function setBusy(nextBusy) {
   isBusy = nextBusy;
-  sendButton.disabled = nextBusy;
-  sendButton.textContent = nextBusy ? getCopy().thinking : getCopy().send;
+  syncComposerState();
 }
 
 function loadState() {
@@ -1426,6 +1537,249 @@ function getMessageActionText(language = state.language) {
 
 function getMessageMetaText(language = state.language) {
   return messageMetaCatalog[normalizeLanguage(language)] || messageMetaCatalog.en;
+}
+
+function getAudioUiText(language = state.language) {
+  return audioUiCatalog[normalizeLanguage(language)] || audioUiCatalog.en;
+}
+
+function renderHelperText() {
+  const copy = getCopy();
+  const audioText = getAudioUiText();
+
+  if (composerNotice.kind === 'recording') {
+    helperText.textContent = audioText.recordingHint;
+    return;
+  }
+
+  if (composerNotice.kind === 'transcribing') {
+    helperText.textContent = audioText.transcribingHint;
+    return;
+  }
+
+  if (composerNotice.kind === 'error' && composerNotice.key && audioText[composerNotice.key]) {
+    helperText.textContent = audioText[composerNotice.key];
+    return;
+  }
+
+  helperText.textContent = copy.helperText;
+}
+
+function setComposerNotice(kind = 'default', key = null) {
+  composerNotice = { kind, key };
+  renderHelperText();
+}
+
+function setTemporaryComposerError(key) {
+  setComposerNotice('error', key);
+
+  window.setTimeout(() => {
+    if (
+      composerNotice.kind === 'error' &&
+      composerNotice.key === key &&
+      recorderState === 'idle' &&
+      !isBusy
+    ) {
+      setComposerNotice();
+    }
+  }, 3200);
+}
+
+function syncComposerState() {
+  const copy = getCopy();
+  const audioText = getAudioUiText();
+  const canUseMic = Boolean(micButton);
+
+  sendButton.disabled = isBusy || recorderState !== 'idle';
+  sendButton.textContent = isBusy ? copy.thinking : copy.send;
+
+  if (canUseMic) {
+    micButton.disabled = isBusy || recorderState === 'transcribing';
+    micButton.classList.toggle('is-recording', recorderState === 'recording');
+    micButton.classList.toggle('is-transcribing', recorderState === 'transcribing');
+    micButton.setAttribute('aria-pressed', recorderState === 'recording' ? 'true' : 'false');
+
+    const micLabel = recorderState === 'recording' ? audioText.stop : audioText.start;
+    micButton.setAttribute('aria-label', micLabel);
+    micButton.title = micLabel;
+  }
+
+  renderHelperText();
+}
+
+async function toggleAudioRecording() {
+  if (isBusy || recorderState === 'transcribing') {
+    return;
+  }
+
+  if (recorderState === 'recording') {
+    stopAudioRecording();
+    return;
+  }
+
+  await startAudioRecording();
+}
+
+async function startAudioRecording() {
+  if (
+    typeof navigator === 'undefined' ||
+    !navigator.mediaDevices ||
+    typeof navigator.mediaDevices.getUserMedia !== 'function' ||
+    typeof MediaRecorder === 'undefined'
+  ) {
+    setTemporaryComposerError('unsupported');
+    return;
+  }
+
+  try {
+    mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mimeType = pickRecorderMimeType();
+    mediaRecorder = mimeType
+      ? new MediaRecorder(mediaStream, { mimeType })
+      : new MediaRecorder(mediaStream);
+    recordedChunks = [];
+
+    mediaRecorder.addEventListener('dataavailable', (event) => {
+      if (event.data?.size) {
+        recordedChunks.push(event.data);
+      }
+    });
+
+    mediaRecorder.addEventListener('stop', handleAudioRecordingStop, { once: true });
+    mediaRecorder.start();
+
+    recorderState = 'recording';
+    setComposerNotice('recording');
+    syncComposerState();
+  } catch (error) {
+    stopActiveMediaStream();
+
+    if (error?.name === 'NotAllowedError' || error?.name === 'PermissionDeniedError') {
+      setTemporaryComposerError('permissionDenied');
+      return;
+    }
+
+    setTemporaryComposerError('transcriptionFailed');
+  }
+}
+
+function stopAudioRecording() {
+  if (!mediaRecorder || recorderState !== 'recording') {
+    return;
+  }
+
+  recorderState = 'transcribing';
+  setComposerNotice('transcribing');
+  syncComposerState();
+  mediaRecorder.stop();
+}
+
+async function handleAudioRecordingStop() {
+  const mimeType = mediaRecorder?.mimeType || recordedChunks[0]?.type || 'audio/webm';
+  const audioBlob = new Blob(recordedChunks, { type: mimeType });
+
+  recordedChunks = [];
+  mediaRecorder = null;
+  stopActiveMediaStream();
+
+  if (!audioBlob.size) {
+    recorderState = 'idle';
+    syncComposerState();
+    setTemporaryComposerError('noSpeech');
+    return;
+  }
+
+  try {
+    const transcript = await transcribeAudioBlob(audioBlob);
+
+    recorderState = 'idle';
+    setComposerNotice();
+    syncComposerState();
+
+    if (!transcript) {
+      setTemporaryComposerError('noSpeech');
+      return;
+    }
+
+    appendTranscriptToComposer(transcript);
+  } catch (_error) {
+    recorderState = 'idle';
+    syncComposerState();
+    setTemporaryComposerError('transcriptionFailed');
+  }
+}
+
+function appendTranscriptToComposer(transcript) {
+  const normalizedTranscript = String(transcript || '').trim();
+
+  if (!normalizedTranscript) {
+    return;
+  }
+
+  messageInput.value = messageInput.value.trim()
+    ? `${messageInput.value.trim()}\n${normalizedTranscript}`
+    : normalizedTranscript;
+  messageInput.focus();
+  messageInput.setSelectionRange(messageInput.value.length, messageInput.value.length);
+}
+
+async function transcribeAudioBlob(audioBlob) {
+  const audioBase64 = await blobToBase64(audioBlob);
+  const response = await fetch('/api/transcribe', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      audioBase64,
+      mimeType: audioBlob.type || 'audio/webm',
+      language: state.language,
+    }),
+  });
+
+  const payload = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(payload?.error || 'transcription_failed');
+  }
+
+  return String(payload?.text || '').trim();
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const result = String(reader.result || '');
+      const [, base64 = ''] = result.split(',');
+      resolve(base64);
+    };
+
+    reader.onerror = () => {
+      reject(reader.error || new Error('audio_encoding_failed'));
+    };
+
+    reader.readAsDataURL(blob);
+  });
+}
+
+function pickRecorderMimeType() {
+  if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') {
+    return '';
+  }
+
+  const candidates = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
+  return candidates.find((candidate) => MediaRecorder.isTypeSupported(candidate)) || '';
+}
+
+function stopActiveMediaStream() {
+  if (!mediaStream) {
+    return;
+  }
+
+  mediaStream.getTracks().forEach((track) => track.stop());
+  mediaStream = null;
 }
 
 function renderMessageActions(container, message) {

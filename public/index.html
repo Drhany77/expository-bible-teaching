@@ -79,9 +79,21 @@
               <p class="helper-text" id="helperText">
                 You can change the teaching source at any time during the conversation.
               </p>
-              <button class="primary-button send-button" id="sendButton" type="submit">
-                Send
-              </button>
+              <div class="composer-button-group">
+                <button class="primary-button send-button" id="sendButton" type="submit">
+                  Send
+                </button>
+                <button class="mic-button" id="micButton" type="button" aria-label="Record audio" aria-pressed="false">
+                  <span class="mic-button-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V7a3.5 3.5 0 1 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z"></path>
+                      <path d="M18 12a6 6 0 0 1-12 0"></path>
+                      <path d="M12 18v3"></path>
+                      <path d="M8.5 21h7"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
             </div>
           </form>
         </section>
